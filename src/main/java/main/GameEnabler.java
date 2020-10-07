@@ -16,9 +16,9 @@ import engine.GameEngine;
  */
 public class GameEnabler {
 
-	GameEngine engine;
-	GameRenderer renderer;
-	GameBundleWrapper wrapper;
+	private GameEngine engine;
+	private GameRenderer renderer;
+	private GameBundleWrapper wrapper;
 
 	/**
 	 * The constructor takes in and saves an engine, a renderer, and a game wrapper.
@@ -39,7 +39,8 @@ public class GameEnabler {
 	 */
 	public void enable() {
 		engine.startEngine();
-		GameLogicTimer timer = new GameLogicTimer(wrapper.getBundle().getLogic());
+		wrapper.getBundle().initBundleParts(renderer);
+		GameLogicTimer timer = new GameLogicTimer(wrapper);
 		Thread gameLogicThread = new Thread(timer);
 		gameLogicThread.start();
 	}

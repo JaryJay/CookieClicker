@@ -1,9 +1,12 @@
 package bundle;
 
+import java.util.ArrayList;
+
 import bundle.data.GameData;
 import bundle.input.GameInput;
 import bundle.logic.GameLogic;
 import bundle.visuals.GameVisuals;
+import bundle.visuals.displayer.renderer.GameRenderer;
 
 /**
  * A collection of the four bundle parts needed in a game:
@@ -47,6 +50,15 @@ public class GameBundle {
 		this.visuals.setBundle(this);
 	}
 
+	public ArrayList<BundlePart> getBundleParts() {
+		ArrayList<BundlePart> parts = new ArrayList<>();
+		parts.add(data);
+		parts.add(input);
+		parts.add(logic);
+		parts.add(visuals);
+		return parts;
+	}
+
 	public GameData getData() {
 		return data;
 	}
@@ -77,7 +89,13 @@ public class GameBundle {
 
 	public void setVisuals(GameVisuals visuals) {
 		this.visuals = visuals;
+	}
 
+	public void initBundleParts(GameRenderer renderer) {
+//		data.init();
+//		input.init();
+//		logic.init();
+		visuals.init(renderer);
 	}
 
 }

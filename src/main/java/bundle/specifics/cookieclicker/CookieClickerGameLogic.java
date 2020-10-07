@@ -9,7 +9,7 @@ public class CookieClickerGameLogic extends GameLogic {
 
 	@Override
 	public void update() {
-		System.out.println("Updating in CookieClickerGameLogic.java");
+		System.out.println("Updating in " + this.getClass().getName());
 	}
 
 }

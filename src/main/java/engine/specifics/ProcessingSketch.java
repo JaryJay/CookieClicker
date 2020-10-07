@@ -2,6 +2,8 @@ package engine.specifics;
 
 import bundle.GameBundle;
 import bundle.GameBundleWrapper;
+import bundle.visuals.displayer.renderer.GameRenderer;
+import bundle.visuals.displayer.renderer.specifics.ProcessingRenderer;
 import engine.GameEngine;
 import processing.core.PApplet;
 
@@ -15,13 +17,6 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 
 	private GameBundleWrapper wrapper;
 	private boolean fullScreen = false;
-
-	public ProcessingSketch() {
-	}
-
-	@Override
-	public void init() {
-	}
 
 	@Override
 	public void startEngine() {
@@ -49,7 +44,7 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 	@Override
 	public void draw() {
 		GameBundle bundle = wrapper.getBundle();
-		bundle.getVisuals().draw();
+		bundle.getVisuals().display();
 	}
 
 	@Override
@@ -60,6 +55,15 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 	@Override
 	public GameBundleWrapper getWrapper() {
 		return wrapper;
+	}
+
+	@Override
+	public GameRenderer getRenderer() {
+		return new ProcessingRenderer(this);
+	}
+
+	@Override
+	public void init() {
 	}
 
 }

@@ -4,9 +4,6 @@ public abstract class BundlePart {
 
 	private GameBundle bundle;
 
-	public BundlePart() {
-	}
-
 	public GameBundle getBundle() {
 		return bundle;
 	}

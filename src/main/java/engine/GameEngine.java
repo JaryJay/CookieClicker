@@ -1,6 +1,7 @@
 package engine;
 
 import bundle.GameBundleWrapper;
+import bundle.visuals.displayer.renderer.GameRenderer;
 
 /**
  * A basic engine interface. Has a init() function, startEngine() function, and
@@ -29,5 +30,7 @@ public interface GameEngine {
 	public abstract void startEngine();
 
 	public abstract void attach(GameBundleWrapper wrapper);
+
+	public abstract GameRenderer getRenderer();
 
 }
