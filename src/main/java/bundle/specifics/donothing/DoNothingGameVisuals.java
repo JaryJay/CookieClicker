@@ -5,8 +5,8 @@ import bundle.visuals.displayer.renderer.GameRenderer;
 
 public class DoNothingGameVisuals extends GameVisuals {
 
-	public DoNothingGameVisuals(GameRenderer renderer) {
-		super(renderer);
+	public DoNothingGameVisuals() {
+		super();
 	}
 
 	@Override
