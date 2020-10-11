@@ -1,4 +1,4 @@
-package common;
+package bundle.logic;
 
 public interface Clickable {
 

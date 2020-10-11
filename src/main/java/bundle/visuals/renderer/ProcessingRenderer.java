@@ -1,7 +1,6 @@
-package bundle.visuals.renderer.specifics;
+package bundle.visuals.renderer;
 
-import bundle.visuals.renderer.GameRenderer;
-import engine.specifics.ProcessingSketch;
+import engine.ProcessingSketch;
 
 public class ProcessingRenderer implements GameRenderer {
 

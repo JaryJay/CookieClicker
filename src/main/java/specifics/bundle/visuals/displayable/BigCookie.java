@@ -1,7 +1,7 @@
-package bundle.visuals.displayable.specifics;
+package specifics.bundle.visuals.displayable;
 
+import bundle.logic.Clickable;
 import bundle.visuals.displayable.Displayable;
-import common.Clickable;
 
 public class BigCookie implements Displayable, Clickable {
 

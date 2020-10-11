@@ -1,9 +1,10 @@
-package main;
+package specifics.main;
 
 import bundle.GameBundleWrapper;
-import bundle.specifics.cookieclicker.CookieClickerGameBundleWrapper;
 import bundle.visuals.renderer.GameRenderer;
-import engine.specifics.ProcessingSketch;
+import engine.ProcessingSketch;
+import main.GameEnabler;
+import specifics.bundle.CookieClickerGameBundleWrapper;
 
 /**
  * 

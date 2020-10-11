@@ -1,8 +1,8 @@
-package bundle.visuals.displayer.specifics;
+package specifics.bundle.visuals.displayer;
 
-import bundle.visuals.displayable.specifics.BigCookie;
 import bundle.visuals.displayer.Displayer;
 import bundle.visuals.renderer.GameRenderer;
+import specifics.bundle.visuals.displayable.BigCookie;
 
 public class BigCookieDisplayer extends Displayer<BigCookie> {
 

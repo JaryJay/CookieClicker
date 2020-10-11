@@ -1,12 +1,11 @@
-package bundle.visuals.displayer.specifics;
+package bundle.visuals.displayer;
 
 import bundle.visuals.displayable.TexturedRectangle;
-import bundle.visuals.displayer.Displayer;
 import bundle.visuals.renderer.GameRenderer;
 
-public class RectangleDisplayer extends Displayer<TexturedRectangle> {
+public class TexturedRectangleDisplayer extends Displayer<TexturedRectangle> {
 
-	public RectangleDisplayer(TexturedRectangle displayable, GameRenderer renderer) {
+	public TexturedRectangleDisplayer(TexturedRectangle displayable, GameRenderer renderer) {
 		super(displayable, renderer);
 	}
 

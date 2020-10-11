@@ -1,4 +1,4 @@
-package bundle.specifics.cookieclicker;
+package specifics.bundle;
 
 import bundle.GameBundle;
 import bundle.GameBundleWrapper;

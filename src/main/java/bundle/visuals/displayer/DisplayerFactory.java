@@ -2,10 +2,9 @@ package bundle.visuals.displayer;
 
 import bundle.visuals.displayable.Displayable;
 import bundle.visuals.displayable.TexturedRectangle;
-import bundle.visuals.displayable.specifics.BigCookie;
-import bundle.visuals.displayer.specifics.BigCookieDisplayer;
-import bundle.visuals.displayer.specifics.RectangleDisplayer;
 import bundle.visuals.renderer.GameRenderer;
+import specifics.bundle.visuals.displayable.BigCookie;
+import specifics.bundle.visuals.displayer.BigCookieDisplayer;
 
 public class DisplayerFactory {
 
@@ -20,7 +19,7 @@ public class DisplayerFactory {
 		if (displayable instanceof BigCookie) {
 			return new BigCookieDisplayer((BigCookie) displayable, renderer);
 		} else if (displayable instanceof TexturedRectangle) {
-			return new RectangleDisplayer((TexturedRectangle) displayable, renderer);
+			return new TexturedRectangleDisplayer((TexturedRectangle) displayable, renderer);
 		}
 		return new BigCookieDisplayer((BigCookie) displayable, renderer);
 	}

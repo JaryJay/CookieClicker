@@ -1,4 +1,4 @@
-package bundle.visuals.displayable.specifics;
+package specifics.bundle.visuals.displayable;
 
 public enum CookieType {
 

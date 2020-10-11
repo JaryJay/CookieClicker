@@ -1,10 +1,9 @@
-package engine.specifics;
+package engine;
 
 import bundle.GameBundle;
 import bundle.GameBundleWrapper;
 import bundle.visuals.renderer.GameRenderer;
-import bundle.visuals.renderer.specifics.ProcessingRenderer;
-import engine.GameEngine;
+import bundle.visuals.renderer.ProcessingRenderer;
 import processing.core.PApplet;
 
 /**

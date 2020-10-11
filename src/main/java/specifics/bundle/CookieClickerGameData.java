@@ -1,7 +1,7 @@
-package bundle.specifics.cookieclicker;
+package specifics.bundle;
 
 import bundle.data.GameData;
-import bundle.visuals.displayable.specifics.BigCookie;
+import specifics.bundle.visuals.displayable.BigCookie;
 
 public class CookieClickerGameData extends GameData {
 
