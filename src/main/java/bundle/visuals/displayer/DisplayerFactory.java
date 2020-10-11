@@ -1,7 +1,9 @@
 package bundle.visuals.displayer;
 
 import bundle.visuals.displayable.Displayable;
-import bundle.visuals.displayer.specifics.CookieDisplayer;
+import bundle.visuals.displayable.TexturedRectangle;
+import bundle.visuals.displayable.specifics.BigCookie;
+import bundle.visuals.displayer.specifics.BigCookieDisplayer;
 import bundle.visuals.displayer.specifics.RectangleDisplayer;
 import bundle.visuals.renderer.GameRenderer;
 
@@ -13,14 +15,14 @@ public class DisplayerFactory {
 		this.renderer = renderer;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Displayer getDisplayer(Displayable displayable) throws Exception {
-		String name = displayable.getClass().getSimpleName();
-		if (name == "Cookie") {
-			return new CookieDisplayer(displayable, renderer);
-		} else if (name == "Rectangle") {
-			return new RectangleDisplayer(displayable, renderer);
+		if (displayable instanceof BigCookie) {
+			return new BigCookieDisplayer((BigCookie) displayable, renderer);
+		} else if (displayable instanceof TexturedRectangle) {
+			return new RectangleDisplayer((TexturedRectangle) displayable, renderer);
 		}
-		return new CookieDisplayer(displayable, renderer);
+		return new BigCookieDisplayer((BigCookie) displayable, renderer);
 	}
 
 }

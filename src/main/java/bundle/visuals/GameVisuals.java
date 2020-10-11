@@ -24,6 +24,7 @@ public abstract class GameVisuals extends BundlePart {
 
 	public void display() {
 		for (Displayable d : getBundle().getData().getToBeDisplayed()) {
+			@SuppressWarnings("rawtypes")
 			Displayer displayer = null;
 			try {
 				displayer = displayerFactory.getDisplayer(d);
