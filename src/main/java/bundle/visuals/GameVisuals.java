@@ -1,10 +1,10 @@
 package bundle.visuals;
 
 import bundle.BundlePart;
-import bundle.visuals.displayer.Displayable;
+import bundle.visuals.displayable.Displayable;
 import bundle.visuals.displayer.Displayer;
 import bundle.visuals.displayer.DisplayerFactory;
-import bundle.visuals.displayer.renderer.GameRenderer;
+import bundle.visuals.renderer.GameRenderer;
 
 public abstract class GameVisuals extends BundlePart {
 
@@ -24,7 +24,12 @@ public abstract class GameVisuals extends BundlePart {
 
 	public void display() {
 		for (Displayable d : getBundle().getData().getToBeDisplayed()) {
-			Displayer displayer = displayerFactory.getDisplayer(d);
+			Displayer displayer = null;
+			try {
+				displayer = displayerFactory.getDisplayer(d);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			displayer.display();
 		}
 	}

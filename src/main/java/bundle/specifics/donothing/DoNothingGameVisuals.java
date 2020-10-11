@@ -1,7 +1,7 @@
 package bundle.specifics.donothing;
 
 import bundle.visuals.GameVisuals;
-import bundle.visuals.displayer.renderer.GameRenderer;
+import bundle.visuals.renderer.GameRenderer;
 
 public class DoNothingGameVisuals extends GameVisuals {
 

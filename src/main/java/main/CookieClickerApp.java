@@ -2,8 +2,7 @@ package main;
 
 import bundle.GameBundleWrapper;
 import bundle.specifics.cookieclicker.CookieClickerGameBundleWrapper;
-import bundle.visuals.displayer.renderer.GameRenderer;
-import engine.GameEngine;
+import bundle.visuals.renderer.GameRenderer;
 import engine.specifics.ProcessingSketch;
 
 /**
@@ -30,7 +29,7 @@ public class CookieClickerApp {
 		// We use ProcessingSketch in Cookie Clicker.
 		// To use a different engine, assign to engine an object of a different
 		// class that implements GameEngine.
-		GameEngine engine = new ProcessingSketch();
+		ProcessingSketch engine = new ProcessingSketch();
 
 		// Create a renderer.
 		// We use Processing's built-in renderer.
@@ -43,10 +42,6 @@ public class CookieClickerApp {
 		// To change, change CookieClickerGameBundleWrapper to the bundle wrapper
 		// of your choice, e.g. DoNothingGameBundleWrapper()
 		GameBundleWrapper bundleWrapper = new CookieClickerGameBundleWrapper();
-
-		// Attach the bundleWrapper to the engine.
-		// Don't change.
-		engine.attach(bundleWrapper);
 
 		// Create and run the game enabler.
 		// Don't change.

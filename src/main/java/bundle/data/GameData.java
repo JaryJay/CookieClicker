@@ -3,7 +3,7 @@ package bundle.data;
 import java.util.ArrayList;
 
 import bundle.BundlePart;
-import bundle.visuals.displayer.Displayable;
+import bundle.visuals.displayable.Displayable;
 
 public abstract class GameData extends BundlePart {
 
@@ -15,6 +15,9 @@ public abstract class GameData extends BundlePart {
 
 	public void addDisplayable(Displayable displayable) {
 		toBeDisplayed.add(displayable);
+	}
+
+	public void init() {
 	}
 
 }

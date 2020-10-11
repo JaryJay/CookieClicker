@@ -1,4 +1,4 @@
-package bundle.visuals.displayer.renderer;
+package bundle.visuals.renderer;
 
 public interface GameRenderer {
 

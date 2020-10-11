@@ -2,8 +2,8 @@ package engine.specifics;
 
 import bundle.GameBundle;
 import bundle.GameBundleWrapper;
-import bundle.visuals.displayer.renderer.GameRenderer;
-import bundle.visuals.displayer.renderer.specifics.ProcessingRenderer;
+import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.specifics.ProcessingRenderer;
 import engine.GameEngine;
 import processing.core.PApplet;
 
@@ -48,7 +48,7 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 	}
 
 	@Override
-	public void attach(GameBundleWrapper wrapper) {
+	public void setBundleWrapper(GameBundleWrapper wrapper) {
 		this.wrapper = wrapper;
 	}
 
@@ -57,7 +57,6 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 		return wrapper;
 	}
 
-	@Override
 	public GameRenderer getRenderer() {
 		return new ProcessingRenderer(this);
 	}

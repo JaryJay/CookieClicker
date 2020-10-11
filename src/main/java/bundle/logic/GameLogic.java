@@ -6,4 +6,7 @@ public abstract class GameLogic extends BundlePart {
 
 	public abstract void update();
 
+	public void init() {
+	}
+
 }

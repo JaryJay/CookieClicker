@@ -6,7 +6,7 @@ import bundle.data.GameData;
 import bundle.input.GameInput;
 import bundle.logic.GameLogic;
 import bundle.visuals.GameVisuals;
-import bundle.visuals.displayer.renderer.GameRenderer;
+import bundle.visuals.renderer.GameRenderer;
 
 /**
  * A collection of the four bundle parts needed in a game:
@@ -92,9 +92,9 @@ public class GameBundle {
 	}
 
 	public void initBundleParts(GameRenderer renderer) {
-//		data.init();
-//		input.init();
-//		logic.init();
+		data.init();
+		input.init();
+		logic.init();
 		visuals.init(renderer);
 	}
 

@@ -1,17 +1,15 @@
 package bundle.visuals.displayer.specifics;
 
+import bundle.visuals.displayable.Displayable;
 import bundle.visuals.displayer.Displayer;
-import bundle.visuals.displayer.renderer.GameRenderer;
+import bundle.visuals.renderer.GameRenderer;
 
-public class RectangleDisplayer implements Displayer{
+public class RectangleDisplayer extends Displayer {
 
-	private GameRenderer renderer;
-
-	public RectangleDisplayer(GameRenderer renderer) {
-		super();
-		this.renderer = renderer;
+	public RectangleDisplayer(Displayable displayable, GameRenderer renderer) {
+		super(displayable, renderer);
 	}
-	
+
 	@Override
 	public void display() {
 		renderer.fill(48, 199, 18);

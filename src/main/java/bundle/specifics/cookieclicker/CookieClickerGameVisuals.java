@@ -2,7 +2,7 @@ package bundle.specifics.cookieclicker;
 
 import bundle.visuals.GameVisuals;
 import bundle.visuals.displayer.DisplayerFactory;
-import bundle.visuals.displayer.renderer.GameRenderer;
+import bundle.visuals.renderer.GameRenderer;
 
 public class CookieClickerGameVisuals extends GameVisuals {
 

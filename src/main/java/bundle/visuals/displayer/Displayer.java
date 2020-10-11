@@ -1,7 +1,19 @@
 package bundle.visuals.displayer;
 
-public interface Displayer {
+import bundle.visuals.displayable.Displayable;
+import bundle.visuals.renderer.GameRenderer;
 
-	public void display();
+public abstract class Displayer {
+
+	protected Displayable displayable;
+	protected GameRenderer renderer;
+
+	public Displayer(Displayable displayable, GameRenderer renderer) {
+		super();
+		this.displayable = displayable;
+		this.renderer = renderer;
+	}
+
+	public abstract void display();
 
 }

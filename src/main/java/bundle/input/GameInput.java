@@ -4,4 +4,7 @@ import bundle.BundlePart;
 
 public abstract class GameInput extends BundlePart {
 
+	public void init() {
+	}
+
 }

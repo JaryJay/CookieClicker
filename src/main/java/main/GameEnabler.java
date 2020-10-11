@@ -2,7 +2,7 @@ package main;
 
 import bundle.GameBundleWrapper;
 import bundle.logic.GameLogicTimer;
-import bundle.visuals.displayer.renderer.GameRenderer;
+import bundle.visuals.renderer.GameRenderer;
 import engine.GameEngine;
 
 /**
@@ -38,6 +38,9 @@ public class GameEnabler {
 	 * motion.
 	 */
 	public void enable() {
+		// Attach the bundleWrapper to the engine.
+		// Don't change.
+		engine.setBundleWrapper(wrapper);
 		engine.startEngine();
 		wrapper.getBundle().initBundleParts(renderer);
 		GameLogicTimer timer = new GameLogicTimer(wrapper);
