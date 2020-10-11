@@ -8,7 +8,7 @@ public class CookieClickerGameVisuals extends GameVisuals {
 
 	@Override
 	public void display() {
-		System.out.println("Drawing in " + this.getClass().getName());
+		super.display();
 	}
 
 	@Override

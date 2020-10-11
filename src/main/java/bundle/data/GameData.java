@@ -7,7 +7,7 @@ import bundle.visuals.displayable.Displayable;
 
 public abstract class GameData extends BundlePart {
 
-	private ArrayList<Displayable> toBeDisplayed;
+	private ArrayList<Displayable> toBeDisplayed = new ArrayList<>();
 
 	public ArrayList<Displayable> getToBeDisplayed() {
 		return toBeDisplayed;

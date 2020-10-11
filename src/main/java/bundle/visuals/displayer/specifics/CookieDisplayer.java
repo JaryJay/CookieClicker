@@ -26,7 +26,7 @@ public class CookieDisplayer extends Displayer {
 			renderer.fill(235, 178, 108);
 		else if (cookie.getCookieType() == CookieType.WALNUT)
 			renderer.fill(173, 116, 45);
-		renderer.drawEllipse(80, 500, 200, 200);
+		renderer.drawEllipse(180, 300, 200, 200);
 	}
 
 }
