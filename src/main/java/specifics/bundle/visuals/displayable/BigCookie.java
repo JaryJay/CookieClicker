@@ -12,8 +12,30 @@ public class BigCookie implements Displayable, Clickable {
 
 	public BigCookie() {
 		onClick = () -> {
-
 		};
+	}
+
+	public BigCookie(float x, float y) {
+		this.centerX = x;
+		this.centerY = y;
+		onClick = () -> {
+		};
+	}
+
+	public float getCenterX() {
+		return centerX;
+	}
+
+	public void setCenterX(float centerX) {
+		this.centerX = centerX;
+	}
+
+	public float getCenterY() {
+		return centerY;
+	}
+
+	public void setCenterY(float centerY) {
+		this.centerY = centerY;
 	}
 
 	@Override
@@ -26,11 +48,11 @@ public class BigCookie implements Displayable, Clickable {
 		return onClick;
 	}
 
-	public float getRADIUS() {
+	public float getRadius() {
 		return radius;
 	}
 
-	public void setRADIUS(float radius) {
+	public void setRadius(float radius) {
 		this.radius = radius;
 	}
 

@@ -1,27 +1,86 @@
 package bundle.visuals.displayer;
 
-import bundle.visuals.displayable.Displayable;
-import bundle.visuals.displayable.TexturedRectangle;
-import bundle.visuals.renderer.GameRenderer;
-import specifics.bundle.visuals.displayable.BigCookie;
-import specifics.bundle.visuals.displayer.BigCookieDisplayer;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
+import bundle.visuals.displayable.Displayable;
+import bundle.visuals.renderer.GameRenderer;
+
+/**
+ * A factory that finds the corresponding displayer for a given displayable.
+ * <p>
+ * If you are to add functionality to the {@link DisplayerFactory}, follow the
+ * steps outlined below:
+ * <p>
+ * 1. Make a class implementing the {@link Displayable} interface under the
+ * package specifics.bundle.visuals.displayable or bundle.visuals.displayable.
+ * <p>
+ * 2. Make a class extending the {@link Displayer} class under the package
+ * specifics.bundle.visuals.displayer or bundle.visuals.displayer. You must give
+ * the class the same name as the Displayable with the suffix "Displayer".
+ * <p>
+ * Example:
+ * 
+ * <pre>
+ * public class Rectangle implements Displayable
+ * public class RectangleDisplayer extends Displayer
+ * </pre>
+ * 
+ * @author Jay
+ *
+ */
 public class DisplayerFactory {
 
 	private GameRenderer renderer;
+	@SuppressWarnings("rawtypes")
+	Map<Class<? extends Displayable>, Displayer> displayableToDisplayer = new HashMap<>();
 
+	/**
+	 * Takes in a renderer and saves it.
+	 * 
+	 * @param renderer the renderer
+	 */
 	public DisplayerFactory(GameRenderer renderer) {
 		this.renderer = renderer;
 	}
 
+	/**
+	 * Returns the corresponding displayer for a given displayable.
+	 * 
+	 * @param displayable the displayable
+	 * @return the corresponding displayer
+	 * @throws ClassNotFoundException corresponding displayer not found
+	 */
 	@SuppressWarnings("rawtypes")
-	public Displayer getDisplayer(Displayable displayable) throws Exception {
-		if (displayable instanceof BigCookie) {
-			return new BigCookieDisplayer((BigCookie) displayable, renderer);
-		} else if (displayable instanceof TexturedRectangle) {
-			return new TexturedRectangleDisplayer((TexturedRectangle) displayable, renderer);
+	public Displayer getDisplayer(Displayable displayable) throws ClassNotFoundException {
+		// Checking first to see if the corresponding displayer already exists in the
+		// hashmap
+		Displayer displayer = displayableToDisplayer.get(displayable.getClass());
+		if (displayer != null) {
+			return displayer;
 		}
-		return new BigCookieDisplayer((BigCookie) displayable, renderer);
+
+		// Manipulating strings to find the class name of the displayer
+		String displayableName = displayable.getName();
+		int lastDotIndex = displayableName.lastIndexOf('.');
+		String className = displayableName.substring(0, lastDotIndex - 4) + "er."
+				+ displayableName.substring(lastDotIndex + 1) + "Displayer";
+		try {
+			// Instantiate the displayer using the dark magic
+			Class<? extends Displayer> displayerClass = Class.forName(className).asSubclass(Displayer.class);
+			Constructor<? extends Displayer> displayerConstructor = displayerClass.getConstructor(GameRenderer.class);
+			displayer = displayerConstructor.newInstance(renderer);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+		}
+		// Saving it into the hashmap for future use
+		displayableToDisplayer.put(displayable.getClass(), displayer);
+
+		// Returning the displayer
+		return displayer;
 	}
 
 }

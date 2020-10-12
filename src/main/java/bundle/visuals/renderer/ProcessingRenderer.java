@@ -35,4 +35,9 @@ public class ProcessingRenderer implements GameRenderer {
 		sketch.fill(r, g, b);
 	}
 
+	@Override
+	public void clear(int r, int g, int b) {
+		sketch.background(r, g, b);
+	}
+
 }

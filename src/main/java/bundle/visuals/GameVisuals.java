@@ -2,7 +2,6 @@ package bundle.visuals;
 
 import bundle.BundlePart;
 import bundle.visuals.displayable.Displayable;
-import bundle.visuals.displayer.Displayer;
 import bundle.visuals.displayer.DisplayerFactory;
 import bundle.visuals.renderer.GameRenderer;
 
@@ -22,16 +21,14 @@ public abstract class GameVisuals extends BundlePart {
 		this.displayerFactory = displayerFactory;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void display() {
 		for (Displayable d : getBundle().getData().getToBeDisplayed()) {
-			@SuppressWarnings("rawtypes")
-			Displayer displayer = null;
 			try {
-				displayer = displayerFactory.getDisplayer(d);
+				displayerFactory.getDisplayer(d).display(d);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			displayer.display();
 		}
 	}
 

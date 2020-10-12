@@ -6,14 +6,15 @@ import specifics.bundle.visuals.displayable.BigCookie;
 
 public class BigCookieDisplayer extends Displayer<BigCookie> {
 
-	public BigCookieDisplayer(BigCookie displayable, GameRenderer renderer) throws Exception {
-		super(displayable, renderer);
+	public BigCookieDisplayer(GameRenderer renderer) {
+		super(renderer);
 	}
 
 	@Override
-	public void display() {
+	public void display(BigCookie displayable) {
 		renderer.fill(82, 53, 17);
-		renderer.drawEllipse(180, 300, 200, 200);
+		int radius = (int) displayable.getRadius();
+		renderer.drawEllipse((int) displayable.getCenterX(), (int) displayable.getCenterY(), radius, radius);
 	}
 
 }

@@ -1,6 +1,8 @@
 package specifics.bundle;
 
 import bundle.data.GameData;
+import bundle.visuals.displayable.Background;
+import bundle.visuals.displayable.TexturedRectangle;
 import specifics.bundle.visuals.displayable.BigCookie;
 
 public class CookieClickerGameData extends GameData {
@@ -14,6 +16,14 @@ public class CookieClickerGameData extends GameData {
 	private int numOfFactories;
 	private int numOfBanks;
 	private int numOfPortals;
+
+	public CookieClickerGameData() {
+		addDisplayable(new Background(7, 115, 173));
+		addDisplayable(new BigCookie());
+		addDisplayable(new BigCookie(500, 200));
+		addDisplayable(new BigCookie(300, 250));
+		addDisplayable(new TexturedRectangle());
+	}
 
 	public int getNumOfCursors() {
 		return numOfCursors;
@@ -69,10 +79,6 @@ public class CookieClickerGameData extends GameData {
 
 	public void setNumOfPortals(int numOfPortals) {
 		this.numOfPortals = numOfPortals;
-	}
-
-	public CookieClickerGameData() {
-		addDisplayable(new BigCookie());
 	}
 
 	public int getNumOfCookies() {
