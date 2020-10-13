@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import bundle.BundlePart;
 import bundle.visuals.displayable.Displayable;
 
+/**
+ * A bundle part that stores data.
+ * 
+ * @author Jay
+ *
+ */
 public abstract class GameData extends BundlePart {
 
 	private ArrayList<Displayable> toBeDisplayed = new ArrayList<>();

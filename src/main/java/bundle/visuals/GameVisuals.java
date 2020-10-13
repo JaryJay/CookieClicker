@@ -1,10 +1,17 @@
 package bundle.visuals;
 
 import bundle.BundlePart;
+import bundle.data.GameData;
 import bundle.visuals.displayable.Displayable;
 import bundle.visuals.displayer.DisplayerFactory;
 import bundle.visuals.renderer.GameRenderer;
 
+/**
+ * A bundle part that displays visuals based on data from {@link GameData}.
+ * 
+ * @author Jay
+ *
+ */
 public abstract class GameVisuals extends BundlePart {
 
 	private DisplayerFactory displayerFactory;
