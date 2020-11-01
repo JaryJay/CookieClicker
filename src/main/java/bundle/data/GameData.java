@@ -2,8 +2,9 @@ package bundle.data;
 
 import java.util.ArrayList;
 
-import bundle.BundlePart;
+import bundle.AbstractBundlePart;
 import bundle.visuals.displayable.Displayable;
+import common.entity.User;
 
 /**
  * A bundle part that stores data.
@@ -11,9 +12,10 @@ import bundle.visuals.displayable.Displayable;
  * @author Jay
  *
  */
-public abstract class GameData extends BundlePart {
+public abstract class GameData extends AbstractBundlePart {
 
 	private ArrayList<Displayable> toBeDisplayed = new ArrayList<>();
+	private User user;
 
 	public ArrayList<Displayable> getToBeDisplayed() {
 		return toBeDisplayed;
@@ -24,6 +26,11 @@ public abstract class GameData extends BundlePart {
 	}
 
 	public void init() {
+		user = new User("Jay", 0); // TODO: Let the player decide their name and auto-generate the id.
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 }

@@ -1,10 +1,9 @@
 package bundle.visuals;
 
-import bundle.BundlePart;
+import bundle.AbstractBundlePart;
 import bundle.data.GameData;
 import bundle.visuals.displayable.Displayable;
 import bundle.visuals.displayer.DisplayerFactory;
-import bundle.visuals.renderer.GameRenderer;
 
 /**
  * A bundle part that displays visuals based on data from {@link GameData}.
@@ -12,20 +11,12 @@ import bundle.visuals.renderer.GameRenderer;
  * @author Jay
  *
  */
-public abstract class GameVisuals extends BundlePart {
+public abstract class GameVisuals extends AbstractBundlePart {
 
 	private DisplayerFactory displayerFactory;
 
-	public void init(GameRenderer renderer) {
-		this.displayerFactory = new DisplayerFactory(renderer);
-	}
-
-	public DisplayerFactory getDisplayerFactory() {
-		return displayerFactory;
-	}
-
-	public void setDisplayerFactory(DisplayerFactory displayerFactory) {
-		this.displayerFactory = displayerFactory;
+	public void init() {
+		this.displayerFactory = new DisplayerFactory(getBundle().getWrapper().getRenderer());
 	}
 
 	@SuppressWarnings("unchecked")

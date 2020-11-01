@@ -1,6 +1,6 @@
 package bundle.logic;
 
-import bundle.BundlePart;
+import bundle.AbstractBundlePart;
 import bundle.data.GameData;
 import bundle.input.GameInput;
 
@@ -12,7 +12,7 @@ import bundle.input.GameInput;
  * @author Jay
  *
  */
-public abstract class GameLogic extends BundlePart {
+public abstract class GameLogic extends AbstractBundlePart {
 
 	public abstract void update();
 

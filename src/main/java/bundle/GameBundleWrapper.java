@@ -1,5 +1,9 @@
 package bundle;
 
+import bundle.input.GameInputBuffer;
+import bundle.visuals.renderer.GameRenderer;
+import common.entity.User;
+
 /**
  * A container for a game bundle to make switching bundles easier.
  * 
@@ -18,6 +22,9 @@ package bundle;
 public class GameBundleWrapper {
 
 	private GameBundle bundle;
+	private GameRenderer renderer;
+	private GameInputBuffer inputBuffer;
+	private User user;
 
 	/**
 	 * A constructor that takes in the initial bundle. Should not be null.
@@ -26,6 +33,8 @@ public class GameBundleWrapper {
 	 */
 	public GameBundleWrapper(GameBundle bundle) {
 		this.bundle = bundle;
+		bundle.wrapper = this;
+		inputBuffer = new GameInputBuffer();
 	}
 
 	/**
@@ -35,10 +44,31 @@ public class GameBundleWrapper {
 	 */
 	public void transition(GameBundle bundle) {
 		this.bundle = bundle;
+		bundle.wrapper = this;
 	}
 
 	public GameBundle getBundle() {
 		return bundle;
 	}
-	
+
+	public GameRenderer getRenderer() {
+		return renderer;
+	}
+
+	public void setRenderer(GameRenderer renderer) {
+		this.renderer = renderer;
+	}
+
+	public GameInputBuffer getInputBuffer() {
+		return inputBuffer;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 }

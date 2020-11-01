@@ -6,7 +6,6 @@ import bundle.data.GameData;
 import bundle.input.GameInput;
 import bundle.logic.GameLogic;
 import bundle.visuals.GameVisuals;
-import bundle.visuals.renderer.GameRenderer;
 
 /**
  * A collection of the four bundle parts needed in a game:
@@ -24,10 +23,12 @@ import bundle.visuals.renderer.GameRenderer;
  */
 public class GameBundle {
 
-	private GameData data;
-	private GameInput input;
-	private GameLogic logic;
-	private GameVisuals visuals;
+	protected GameBundleWrapper wrapper;
+
+	protected GameData data;
+	protected GameInput input;
+	protected GameLogic logic;
+	protected GameVisuals visuals;
 
 	/**
 	 * A constructor that takes in a game data, input, logic, and visuals. Then, the
@@ -50,8 +51,8 @@ public class GameBundle {
 		this.visuals.setBundle(this);
 	}
 
-	public ArrayList<BundlePart> getBundleParts() {
-		ArrayList<BundlePart> parts = new ArrayList<>();
+	public ArrayList<AbstractBundlePart> getBundleParts() {
+		ArrayList<AbstractBundlePart> parts = new ArrayList<>();
 		parts.add(data);
 		parts.add(input);
 		parts.add(logic);
@@ -91,11 +92,15 @@ public class GameBundle {
 		this.visuals = visuals;
 	}
 
-	public void initBundleParts(GameRenderer renderer) {
+	public void initBundleParts() {
 		data.init();
 		input.init();
 		logic.init();
-		visuals.init(renderer);
+		visuals.init();
+	}
+
+	public GameBundleWrapper getWrapper() {
+		return wrapper;
 	}
 
 }

@@ -1,6 +1,6 @@
 package bundle;
 
-public abstract class BundlePart {
+public abstract class AbstractBundlePart {
 
 	private GameBundle bundle;
 

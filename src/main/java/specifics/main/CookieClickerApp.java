@@ -1,9 +1,10 @@
 package specifics.main;
 
 import bundle.GameBundleWrapper;
+import bundle.input.inputdecorator.GameInputDecorator;
 import bundle.visuals.renderer.GameRenderer;
+import engine.GameEnabler;
 import engine.ProcessingSketch;
-import main.GameEnabler;
 import specifics.bundle.CookieClickerGameBundleWrapper;
 
 /**
@@ -28,25 +29,27 @@ public class CookieClickerApp {
 	public static void main(String[] args) {
 		// Create an engine.
 		// We use ProcessingSketch in Cookie Clicker.
-		// To use a different engine, assign to engine an object of a different
+		// To use a different engine, assign to engine an instance of a different
 		// class that implements GameEngine.
 		ProcessingSketch engine = new ProcessingSketch();
 
-		// Create a renderer.
-		// We use Processing's built-in renderer.
-		// To change, assign to renderer an object of a different class that implements
-		// GameRenderer.
+		// Get a renderer from the engine.
+		// Don't change.
 		GameRenderer renderer = engine.getRenderer();
+
+		// Get an input decorator from the engine.
+		// Don't change.
+		GameInputDecorator inputDecorator = engine.getInputDecorator();
 
 		// Create a bundle wrapper that holds a bundle. In this case, we use a
 		// CookieClickerGameBundleWrapper.
 		// To change, change CookieClickerGameBundleWrapper to the bundle wrapper
-		// of your choice, e.g. DoNothingGameBundleWrapper()
+		// of your choice, e.g. NomadsGameBundleWrapper()
 		GameBundleWrapper bundleWrapper = new CookieClickerGameBundleWrapper();
 
 		// Create and run the game enabler.
 		// Don't change.
-		GameEnabler enabler = new GameEnabler(engine, renderer, bundleWrapper);
+		GameEnabler enabler = new GameEnabler(engine, renderer, inputDecorator, bundleWrapper);
 		enabler.enable();
 	}
 

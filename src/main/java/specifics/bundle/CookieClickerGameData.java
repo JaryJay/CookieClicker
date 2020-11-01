@@ -8,6 +8,7 @@ import specifics.bundle.visuals.displayable.BigCookie;
 public class CookieClickerGameData extends GameData {
 
 	private int numOfCookies;
+	private int mousePressedCount;
 
 	private int numOfCursors;
 	private int numOfGrandmas;
@@ -23,6 +24,22 @@ public class CookieClickerGameData extends GameData {
 		addDisplayable(new BigCookie(500, 200));
 		addDisplayable(new BigCookie(300, 250));
 		addDisplayable(new TexturedRectangle());
+	}
+
+	public int getNumOfCookies() {
+		return numOfCookies;
+	}
+
+	public void setNumOfCookies(int numOfCookies) {
+		this.numOfCookies = numOfCookies;
+	}
+
+	public int getMousePressedCount() {
+		return mousePressedCount;
+	}
+
+	public void setMousePressedCount(int mousePressedCount) {
+		this.mousePressedCount = mousePressedCount;
 	}
 
 	public int getNumOfCursors() {
@@ -79,14 +96,6 @@ public class CookieClickerGameData extends GameData {
 
 	public void setNumOfPortals(int numOfPortals) {
 		this.numOfPortals = numOfPortals;
-	}
-
-	public int getNumOfCookies() {
-		return numOfCookies;
-	}
-
-	public void setNumOfCookies(int numOfCookies) {
-		this.numOfCookies = numOfCookies;
 	}
 
 }
