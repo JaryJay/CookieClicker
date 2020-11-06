@@ -13,8 +13,9 @@ public class BigCookieDisplayer extends Displayer<BigCookie> {
 	@Override
 	public void display(BigCookie displayable) {
 		renderer.fill(82, 53, 17);
-		int radius = (int) displayable.getRadius();
-		renderer.drawEllipse((int) displayable.getCenterX(), (int) displayable.getCenterY(), radius, radius);
+		renderer.drawEllipse(displayable.getTopLeftX() + displayable.getWidth() / 2,
+				displayable.getTopLeftY() + displayable.getHeight() / 2, displayable.getWidth(),
+				displayable.getHeight());
 	}
 
 }

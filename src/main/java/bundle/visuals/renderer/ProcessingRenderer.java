@@ -1,6 +1,7 @@
 package bundle.visuals.renderer;
 
 import engine.ProcessingSketch;
+import processing.core.PImage;
 
 public class ProcessingRenderer implements GameRenderer {
 
@@ -31,8 +32,28 @@ public class ProcessingRenderer implements GameRenderer {
 	}
 
 	@Override
+	public void drawImage(PImage image, int topLeftX, int topLeftY, int width, int height) {
+		sketch.image(image, topLeftX, topLeftY, width, height);
+	}
+
+	@Override
 	public void fill(int r, int g, int b) {
 		sketch.fill(r, g, b);
+	}
+
+	@Override
+	public void outlineColour(int r, int g, int b) {
+		sketch.stroke(r, g, b);
+	}
+
+	@Override
+	public void textSize(int size) {
+		sketch.textSize(size);
+	}
+
+	@Override
+	public void text(String text, int topLeftX, int topLeftY) {
+		sketch.text(text, topLeftX, topLeftY);
 	}
 
 	@Override

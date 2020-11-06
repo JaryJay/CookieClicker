@@ -25,8 +25,17 @@ import bundle.visuals.displayer.Displayer;
  */
 public interface Displayable {
 
-	public default String getName() {
-		return this.getClass().getName();
+	/**
+	 * Gets the displayable's corresponding displayer. Does so by manipulating
+	 * strings.
+	 * 
+	 * @return the name of the displayable's corresponding displayer
+	 */
+	public default String getDisplayerName() {
+		String displayableName = this.getClass().getName();
+		int lastDotIndex = displayableName.lastIndexOf('.');
+		return displayableName.substring(0, lastDotIndex - 4) + "er." + displayableName.substring(lastDotIndex + 1)
+				+ "Displayer";
 	}
 
 }

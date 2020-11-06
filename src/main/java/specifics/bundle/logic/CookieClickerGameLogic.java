@@ -1,4 +1,4 @@
-package specifics.bundle;
+package specifics.bundle.logic;
 
 import bundle.logic.GameLogic;
 

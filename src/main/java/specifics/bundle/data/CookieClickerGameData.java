@@ -1,14 +1,12 @@
-package specifics.bundle;
+package specifics.bundle.data;
 
 import bundle.data.GameData;
 import bundle.visuals.displayable.Background;
-import bundle.visuals.displayable.TexturedRectangle;
 import specifics.bundle.visuals.displayable.BigCookie;
 
 public class CookieClickerGameData extends GameData {
 
 	private int numOfCookies;
-	private int mousePressedCount;
 
 	private int numOfCursors;
 	private int numOfGrandmas;
@@ -20,10 +18,9 @@ public class CookieClickerGameData extends GameData {
 
 	public CookieClickerGameData() {
 		addDisplayable(new Background(7, 115, 173));
-		addDisplayable(new BigCookie());
-		addDisplayable(new BigCookie(500, 200));
-		addDisplayable(new BigCookie(300, 250));
-		addDisplayable(new TexturedRectangle());
+		addDisplayable(new BigCookie(300, 250, 200, () -> {
+			System.out.println("Yooo");
+		}));
 	}
 
 	public int getNumOfCookies() {
@@ -32,14 +29,6 @@ public class CookieClickerGameData extends GameData {
 
 	public void setNumOfCookies(int numOfCookies) {
 		this.numOfCookies = numOfCookies;
-	}
-
-	public int getMousePressedCount() {
-		return mousePressedCount;
-	}
-
-	public void setMousePressedCount(int mousePressedCount) {
-		this.mousePressedCount = mousePressedCount;
 	}
 
 	public int getNumOfCursors() {

@@ -62,11 +62,7 @@ public class DisplayerFactory {
 			return displayer;
 		}
 
-		// Manipulating strings to find the class name of the displayer
-		String displayableName = displayable.getName();
-		int lastDotIndex = displayableName.lastIndexOf('.');
-		String className = displayableName.substring(0, lastDotIndex - 4) + "er."
-				+ displayableName.substring(lastDotIndex + 1) + "Displayer";
+		String className = displayable.getDisplayerName();
 		try {
 			// Instantiate the displayer using the dark magic
 			Class<? extends Displayer> displayerClass = Class.forName(className).asSubclass(Displayer.class);

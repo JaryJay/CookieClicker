@@ -2,6 +2,10 @@ package specifics.bundle;
 
 import bundle.GameBundle;
 import bundle.GameBundleWrapper;
+import specifics.bundle.data.CookieClickerGameData;
+import specifics.bundle.input.CookieClickerGameInput;
+import specifics.bundle.logic.CookieClickerGameLogic;
+import specifics.bundle.visuals.CookieClickerGameVisuals;
 
 public class CookieClickerGameBundleWrapper extends GameBundleWrapper {
 

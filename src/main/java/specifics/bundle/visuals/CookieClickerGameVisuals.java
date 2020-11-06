@@ -1,4 +1,4 @@
-package specifics.bundle;
+package specifics.bundle.visuals;
 
 import bundle.visuals.GameVisuals;
 
