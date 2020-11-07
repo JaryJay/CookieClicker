@@ -7,7 +7,6 @@ import bundle.data.gui.AbstractGUI;
 import bundle.data.gui.Button;
 import bundle.visuals.displayable.Displayable;
 import common.entity.User;
-import engine.GameEngine;
 
 /**
  * A bundle part that stores data.
@@ -26,9 +25,6 @@ public abstract class GameData extends AbstractBundlePart {
 	 */
 	private ArrayList<AbstractGUI> guis = new ArrayList<>();
 	private User user;
-
-	private int mouseX;
-	private int mouseY;
 
 	public ArrayList<Displayable> getToBeDisplayed() {
 		return toBeDisplayed;
@@ -51,34 +47,6 @@ public abstract class GameData extends AbstractBundlePart {
 
 	public User getUser() {
 		return user;
-	}
-
-	public int getMouseX() {
-		return mouseX;
-	}
-
-	/**
-	 * Setter for the x position of the cursor. Should only be used by a
-	 * {@link GameEngine}.
-	 * 
-	 * @param mouseX the x-coordinate of the cursor
-	 */
-	public void setMouseX(int mouseX) {
-		this.mouseX = mouseX;
-	}
-
-	public int getMouseY() {
-		return mouseY;
-	}
-
-	/**
-	 * Setter for the x position of the cursor. Should only be used by a
-	 * {@link GameEngine}.
-	 * 
-	 * @param mouseY the y-coordinate of the cursor
-	 */
-	public void setMouseY(int mouseY) {
-		this.mouseY = mouseY;
 	}
 
 }

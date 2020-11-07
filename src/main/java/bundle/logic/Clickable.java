@@ -1,5 +1,15 @@
 package bundle.logic;
 
+/**
+ * Something that executes a {@link Runnable} when clicked. When a clickable is
+ * clicked, the onClick() function should be called.
+ * 
+ * Usually, anything that implements Clickable also implements
+ * {@link Hoverable}.
+ * 
+ * @author Jay
+ *
+ */
 public interface Clickable {
 
 	/**

@@ -72,8 +72,9 @@ public class GameInputDecorator {
 	 * 
 	 * @param mouseButton the key code of the mouse pressed
 	 */
-	public void decorateMousePressed(int mouseButton) {
-		pushEventToInputBuffer(new MousePressedInputEvent(System.currentTimeMillis(), wrapper.getUser(), mouseButton));
+	public void decorateMousePressed(int mouseButton, int mouseX, int mouseY) {
+		pushEventToInputBuffer(
+				new MousePressedInputEvent(System.currentTimeMillis(), wrapper.getUser(), mouseButton, mouseX, mouseY));
 	}
 
 	/**
@@ -82,8 +83,9 @@ public class GameInputDecorator {
 	 * 
 	 * @param mouseButton the key code of the mouse released
 	 */
-	public void decorateMouseReleased(int mouseButton) {
-		pushEventToInputBuffer(new MouseReleasedInputEvent(System.currentTimeMillis(), wrapper.getUser(), mouseButton));
+	public void decorateMouseReleased(int mouseButton, int mouseX, int mouseY) {
+		pushEventToInputBuffer(new MouseReleasedInputEvent(System.currentTimeMillis(), wrapper.getUser(), mouseButton,
+				mouseX, mouseY));
 	}
 
 	/**

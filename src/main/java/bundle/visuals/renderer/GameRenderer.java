@@ -14,6 +14,10 @@ public interface GameRenderer {
 
 	public void drawImage(PImage image, int topLeftX, int topLeftY, int width, int height);
 
+	public default void fill(int grey) {
+		fill(grey, grey, grey);
+	}
+
 	public void fill(int r, int g, int b);
 
 	public void outlineColour(int r, int g, int b);

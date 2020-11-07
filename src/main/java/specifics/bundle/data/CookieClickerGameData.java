@@ -19,8 +19,10 @@ public class CookieClickerGameData extends GameData {
 	public CookieClickerGameData() {
 		addDisplayable(new Background(7, 115, 173));
 		addDisplayable(new BigCookie(300, 250, 200, () -> {
-			System.out.println("Yooo");
+			numOfCookies++;
+			System.out.println(numOfCookies);
 		}));
+//		addDisplayable(new Button("" + numOfCookies, 600, 60, 120, 50, null));
 	}
 
 	public int getNumOfCookies() {

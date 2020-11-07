@@ -3,10 +3,12 @@ package bundle.data.gui;
 import java.util.ArrayList;
 
 import bundle.logic.Clickable;
+import bundle.logic.Hoverable;
 import bundle.visuals.displayable.Displayable;
+import bundle.visuals.displayer.GUIDisplayer;
 import common.DoNothingRunnable;
 
-public abstract class AbstractGUI implements Displayable, Clickable {
+public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 
 	private String text = "";
 	private int topLeftX;
@@ -25,7 +27,14 @@ public abstract class AbstractGUI implements Displayable, Clickable {
 	private int textSize = 24;
 	private int textRatio = 1;
 	private boolean isTextRatio = true;
-	private Runnable onClick;
+
+	private boolean hovered;
+	private boolean pressed;
+
+	private Runnable onPress;
+	private Runnable onRelease;
+	private Runnable onHover;
+	private Runnable onDehover;
 
 	private AbstractGUI parentGUI;
 	private ArrayList<AbstractGUI> childrenGUIs;
@@ -39,7 +48,10 @@ public abstract class AbstractGUI implements Displayable, Clickable {
 		this.topLeftY = topLeftY;
 		this.width = width;
 		this.height = height;
-		onClick = new DoNothingRunnable();
+		onPress = new DoNothingRunnable();
+		onRelease = new DoNothingRunnable();
+		onHover = new DoNothingRunnable();
+		onDehover = new DoNothingRunnable();
 	}
 
 	public void setHeight(int height) {
@@ -186,20 +198,20 @@ public abstract class AbstractGUI implements Displayable, Clickable {
 		this.enabled = enabled;
 	}
 
-	@Override
-	public Runnable getOnClick() {
-		return onClick;
+	public boolean isHovered() {
+		return hovered;
 	}
 
-	protected void setOnClick(Runnable onClick) {
-		this.onClick = onClick;
+	public void setHovered(boolean hovered) {
+		this.hovered = hovered;
 	}
 
-	@Override
-	public boolean isOn(float x, float y) {
-		boolean inboundsX = x > getTopLeftX() && x < getTopLeftX() + getWidth();
-		boolean inboundsY = y > getTopLeftY() && y < getTopLeftY() + getHeight();
-		return inboundsX && inboundsY;
+	public boolean isPressed() {
+		return pressed;
+	}
+
+	public void setPressed(boolean pressX) {
+		this.pressed = pressX;
 	}
 
 	public AbstractGUI getParentGUI() {
@@ -220,6 +232,57 @@ public abstract class AbstractGUI implements Displayable, Clickable {
 
 	public void removeChildGUI(AbstractGUI childGUI) {
 		childrenGUIs.remove(childGUI);
+	}
+
+	@Override
+	public boolean isOn(float x, float y) {
+		boolean inboundsX = x > getTopLeftX() && x < getTopLeftX() + getWidth();
+		boolean inboundsY = y > getTopLeftY() && y < getTopLeftY() + getHeight();
+		return inboundsX && inboundsY;
+	}
+
+	@Override
+	public Runnable getOnClick() {
+		return onRelease;
+	}
+
+	public Runnable getOnPress() {
+		return onPress;
+	}
+
+	public void setOnPress(Runnable onPress) {
+		this.onPress = onPress;
+	}
+
+	public Runnable getOnRelease() {
+		return onRelease;
+	}
+
+	protected void setOnRelease(Runnable onRelease) {
+		this.onRelease = onRelease;
+	}
+
+	@Override
+	public Runnable getOnHover() {
+		return onHover;
+	}
+
+	public void setOnHover(Runnable onHover) {
+		this.onHover = onHover;
+	}
+
+	@Override
+	public Runnable getOnDehover() {
+		return onDehover;
+	}
+
+	public void setOnDehover(Runnable onDehover) {
+		this.onDehover = onDehover;
+	}
+
+	@Override
+	public String getDisplayerName() {
+		return GUIDisplayer.class.getName();
 	}
 
 }

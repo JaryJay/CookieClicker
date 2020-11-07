@@ -85,6 +85,9 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 		inputDecorator.decorateKeyReleased(keyCode);
 	}
 
+	/**
+	 * Does something when the mouse is moved and a mouse button is not pressed.
+	 */
 	@Override
 	public void mouseMoved() {
 		inputDecorator.decorateMouseMoved(mouseX, mouseY);
@@ -92,12 +95,21 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 
 	@Override
 	public void mousePressed() {
-		inputDecorator.decorateMousePressed(mouseButton);
+		inputDecorator.decorateMousePressed(mouseButton, mouseX, mouseY);
 	}
 
 	@Override
 	public void mouseReleased() {
-		inputDecorator.decorateMouseReleased(mouseButton);
+		inputDecorator.decorateMouseReleased(mouseButton, mouseX, mouseY);
+	}
+
+	/**
+	 * Does something when the mouse is moved and a mouse button is pressed.
+	 * However, for more intuitive design, we decorate this as a mouse moved event.
+	 */
+	@Override
+	public void mouseDragged() {
+		inputDecorator.decorateMouseMoved(mouseX, mouseY);
 	}
 
 	@Override

@@ -10,23 +10,18 @@ import bundle.input.eventhandler.MouseMovedInputEventHandler;
 import bundle.input.eventhandler.MousePressedInputEventHandler;
 import bundle.input.eventhandler.MouseReleasedInputEventHandler;
 import bundle.input.eventhandler.MouseScrolledInputEventHandler;
-import specifics.bundle.data.CookieClickerGameData;
 
 public class CookieClickerGameInput extends GameInput {
 
 	@Override
 	protected ArrayList<KeyPressedInputEventHandler> setKeyPressedInputHandler() {
 		ArrayList<KeyPressedInputEventHandler> keyPressedInputEventHandlers = new ArrayList<>();
-		keyPressedInputEventHandlers.add((event) -> {
-			return false;
-		});
 		return keyPressedInputEventHandlers;
 	}
 
 	@Override
 	protected ArrayList<KeyReleasedInputEventHandler> setKeyReleasedInputHandler() {
 		ArrayList<KeyReleasedInputEventHandler> keyReleasedInputEventHandlers = new ArrayList<>();
-
 		return keyReleasedInputEventHandlers;
 	}
 
@@ -34,8 +29,14 @@ public class CookieClickerGameInput extends GameInput {
 	protected ArrayList<MouseMovedInputEventHandler> setMouseMovedInputHandler() {
 		ArrayList<MouseMovedInputEventHandler> mouseMovedInputEventHandlers = new ArrayList<>();
 		mouseMovedInputEventHandlers.add((event) -> {
-			getBundle().getData().setMouseX(event.getMouseX());
-			getBundle().getData().setMouseY(event.getMouseY());
+			for (AbstractGUI gui : getBundle().getData().getGUIs()) {
+				if (gui.isOn(event.getMouseX(), event.getMouseY())) {
+					gui.onHover();
+					return true;
+				}
+				gui.onDehover();
+				return false;
+			}
 			return false;
 		});
 		return mouseMovedInputEventHandlers;
@@ -45,28 +46,30 @@ public class CookieClickerGameInput extends GameInput {
 	protected ArrayList<MousePressedInputEventHandler> setMousePressedInputHandler() {
 		ArrayList<MousePressedInputEventHandler> mousePressedInputEventHandlers = new ArrayList<>();
 		mousePressedInputEventHandlers.add((event) -> {
-//			CookieClickerGameData data = (CookieClickerGameData) getBundle().getData();
-//			data.setMousePressedCount(data.getMousePressedCount() + 1);
-//			System.out.println("Mouse pressed " + data.getMousePressedCount() + " times!");
+			for (AbstractGUI gui : getBundle().getData().getGUIs()) {
+				if (gui.isOn(event.getMouseX(), event.getMouseY())) {
+					gui.setPressed(true);
+					return true;
+				}
+			}
 			return false;
 		});
-
 		return mousePressedInputEventHandlers;
 	}
 
 	@Override
 	protected ArrayList<MouseReleasedInputEventHandler> setMouseReleasedInputHandler() {
 		ArrayList<MouseReleasedInputEventHandler> mouseReleasedInputEventHandlers = new ArrayList<>();
-		for (AbstractGUI gui : getBundle().getData().getGUIs()) {
-			mouseReleasedInputEventHandlers.add((event) -> {
-				CookieClickerGameData data = (CookieClickerGameData) getBundle().getData();
-				if (gui.isOn(data.getMouseX(), data.getMouseY())) {
+		mouseReleasedInputEventHandlers.add((event) -> {
+			for (AbstractGUI gui : getBundle().getData().getGUIs()) {
+				if (gui.isPressed() && gui.isOn(event.getMouseX(), event.getMouseY())) {
 					gui.onClick();
+					gui.setPressed(false);
 					return true;
 				}
-				return false;
-			});
-		}
+			}
+			return false;
+		});
 		return mouseReleasedInputEventHandlers;
 	}
 
