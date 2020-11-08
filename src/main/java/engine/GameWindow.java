@@ -19,7 +19,7 @@ import bundle.GameBundleWrapper;
  * @author Jay
  *
  */
-public interface GameEngine {
+public interface GameWindow {
 
 	public default void init() {
 	}
@@ -29,5 +29,9 @@ public interface GameEngine {
 	public abstract GameBundleWrapper getWrapper();
 
 	public abstract void setBundleWrapper(GameBundleWrapper wrapper);
+
+	public abstract void setWindowTitle(String windowTitle);
+
+	public abstract String getWindowTitle();
 
 }

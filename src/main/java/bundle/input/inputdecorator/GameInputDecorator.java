@@ -56,8 +56,8 @@ public class GameInputDecorator {
 	}
 
 	/**
-	 * Decorates a mouse moved event into an {@link AbstractGameInputEvent} and
-	 * documents it into the input buffer.
+	 * Decorates a mouse moved event or mouse dragged event into an
+	 * {@link AbstractGameInputEvent} and documents it into the input buffer.
 	 * 
 	 * @param mouseX the new x-coordinate of the cursor
 	 * @param mouseY the new y-coordinate of the cursor

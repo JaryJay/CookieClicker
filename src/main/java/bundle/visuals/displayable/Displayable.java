@@ -34,7 +34,6 @@ public interface Displayable {
 	public default String getDisplayerName() {
 		String displayableName = this.getClass().getName();
 		int lastDotIndex = displayableName.lastIndexOf('.');
-		System.out.println(displayableName);
 		return displayableName.substring(0, lastDotIndex - 4) + "er." + displayableName.substring(lastDotIndex + 1)
 				+ "Displayer";
 	}

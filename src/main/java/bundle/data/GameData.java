@@ -33,7 +33,7 @@ public abstract class GameData extends AbstractBundlePart {
 	public void addDisplayable(Displayable displayable) {
 		toBeDisplayed.add(displayable);
 		if (displayable instanceof Button) {
-			guis.add((Button) displayable);
+			guis.add(0, (Button) displayable);
 		}
 	}
 

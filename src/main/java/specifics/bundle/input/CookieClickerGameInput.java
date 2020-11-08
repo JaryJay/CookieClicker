@@ -29,30 +29,59 @@ public class CookieClickerGameInput extends GameInput {
 	protected ArrayList<MouseMovedInputEventHandler> setMouseMovedInputHandler() {
 		ArrayList<MouseMovedInputEventHandler> mouseMovedInputEventHandlers = new ArrayList<>();
 		mouseMovedInputEventHandlers.add((event) -> {
-			for (AbstractGUI gui : getBundle().getData().getGUIs()) {
+			ArrayList<AbstractGUI> getGUIs = getBundle().getData().getGUIs();
+			int index = 0;
+			boolean consumed = false;
+			for (; index < getGUIs.size(); index++) {
+				AbstractGUI gui = getGUIs.get(index);
 				if (gui.isOn(event.getMouseX(), event.getMouseY())) {
-					gui.onHover();
-					return true;
+					if (!gui.isHovered())
+						gui.onHover();
+					consumed = true;
+					break;
+				} else if (gui.isHovered()) {
+					gui.onDehover();
+
 				}
-				gui.onDehover();
-				return false;
 			}
-			return false;
+			for (index++; index < getGUIs.size(); index++) {
+				AbstractGUI gui = getGUIs.get(index);
+				if (gui.isHovered()) {
+					gui.onDehover();
+				}
+			}
+			return consumed;
 		});
 		return mouseMovedInputEventHandlers;
+
 	}
 
 	@Override
 	protected ArrayList<MousePressedInputEventHandler> setMousePressedInputHandler() {
 		ArrayList<MousePressedInputEventHandler> mousePressedInputEventHandlers = new ArrayList<>();
 		mousePressedInputEventHandlers.add((event) -> {
-			for (AbstractGUI gui : getBundle().getData().getGUIs()) {
+			ArrayList<AbstractGUI> getGUIs = getBundle().getData().getGUIs();
+			int index = 0;
+			boolean consumed = false;
+			for (; index < getGUIs.size(); index++) {
+				AbstractGUI gui = getGUIs.get(index);
 				if (gui.isOn(event.getMouseX(), event.getMouseY())) {
-					gui.setPressed(true);
-					return true;
+					if (!gui.isPressed())
+						gui.onPress();
+					consumed = true;
+					break;
+				} else if (gui.isPressed()) {
+					gui.onRelease();
+
 				}
 			}
-			return false;
+			for (index++; index < getGUIs.size(); index++) {
+				AbstractGUI gui = getGUIs.get(index);
+				if (gui.isPressed()) {
+					gui.onRelease();
+				}
+			}
+			return consumed;
 		});
 		return mousePressedInputEventHandlers;
 	}
@@ -61,14 +90,26 @@ public class CookieClickerGameInput extends GameInput {
 	protected ArrayList<MouseReleasedInputEventHandler> setMouseReleasedInputHandler() {
 		ArrayList<MouseReleasedInputEventHandler> mouseReleasedInputEventHandlers = new ArrayList<>();
 		mouseReleasedInputEventHandlers.add((event) -> {
-			for (AbstractGUI gui : getBundle().getData().getGUIs()) {
-				if (gui.isPressed() && gui.isOn(event.getMouseX(), event.getMouseY())) {
-					gui.onClick();
+			ArrayList<AbstractGUI> getGUIs = getBundle().getData().getGUIs();
+			int index = 0;
+			boolean consumed = false;
+			for (; index < getGUIs.size(); index++) {
+				AbstractGUI gui = getGUIs.get(index);
+				if (gui.isOn(event.getMouseX(), event.getMouseY())) {
+					gui.onRelease();
+					consumed = true;
+					break;
+				} else if (gui.isPressed()) {
 					gui.setPressed(false);
-					return true;
 				}
 			}
-			return false;
+			for (index++; index < getGUIs.size(); index++) {
+				AbstractGUI gui = getGUIs.get(index);
+				if (gui.isPressed()) {
+					gui.setPressed(false);
+				}
+			}
+			return consumed;
 		});
 		return mouseReleasedInputEventHandlers;
 	}

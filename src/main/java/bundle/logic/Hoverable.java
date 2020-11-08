@@ -20,28 +20,10 @@ public interface Hoverable {
 	 */
 	public boolean isOn(float x, float y);
 
-	/**
-	 * Should be like this: <code>
-	 * 	if (hovered) {
-	 * 		getOnHover().run();
-	 * 	}
-	 * </code>
-	 * 
-	 * @return
-	 */
 	public default void onHover() {
 		getOnHover().run();
 	}
 
-	/**
-	 * Should be like this: <code>
-	 * 	if (!hovered) {
-	 * 		getOnDehover().run();
-	 * 	}
-	 * </code>
-	 * 
-	 * @return
-	 */
 	public default void onDehover() {
 		getOnDehover().run();
 	}

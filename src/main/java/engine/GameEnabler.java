@@ -16,26 +16,27 @@ import bundle.visuals.renderer.GameRenderer;
  */
 public class GameEnabler {
 
-	private GameEngine engine;
+	private GameWindow window;
 	private GameRenderer renderer;
 	private GameInputDecorator inputDecorator;
 	private GameBundleWrapper wrapper;
 
 	/**
-	 * The constructor takes in and saves an engine, a renderer, an input buffer,
-	 * and a game wrapper.
+	 * The constructor takes in and saves a window, a renderer, an input buffer, and
+	 * a game wrapper.
 	 * 
-	 * @param engine
+	 * @param window
 	 * @param renderer
 	 * @param inputDecorator
 	 * @param wrapper
 	 */
-	public GameEnabler(GameEngine engine, GameRenderer renderer, GameInputDecorator inputDecorator,
-			GameBundleWrapper wrapper) {
-		this.engine = engine;
+	public GameEnabler(GameWindow window, GameRenderer renderer, GameInputDecorator inputDecorator,
+			GameBundleWrapper wrapper, String windowTitle) {
+		this.window = window;
 		this.renderer = renderer;
 		this.inputDecorator = inputDecorator;
 		this.wrapper = wrapper;
+		window.setWindowTitle(windowTitle);
 	}
 
 	/**
@@ -45,8 +46,8 @@ public class GameEnabler {
 	public void enable() {
 		// Attach the bundleWrapper to the engine.
 		// Don't change.
-		engine.setBundleWrapper(wrapper);
-		engine.startEngine();
+		window.setBundleWrapper(wrapper);
+		window.startEngine();
 		wrapper.setRenderer(renderer);
 		inputDecorator.setGameInputBuffer(wrapper.getInputBuffer());
 		inputDecorator.setBundleWrapper(wrapper);

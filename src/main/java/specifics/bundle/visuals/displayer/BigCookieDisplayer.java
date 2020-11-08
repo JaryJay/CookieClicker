@@ -15,13 +15,13 @@ public class BigCookieDisplayer extends Displayer<BigCookie> {
 		if (displayable.isPressed()) {
 			renderer.fill(125, 84, 2);
 			renderer.drawEllipse(displayable.getTopLeftX() + displayable.getWidth() / 2,
-					displayable.getTopLeftY() + displayable.getHeight() / 2, (int) (displayable.getWidth() * 0.8),
-					(int) (displayable.getHeight() * 0.8));
+					displayable.getTopLeftY() + displayable.getHeight() / 2, (int) (displayable.getWidth() * 0.9),
+					(int) (displayable.getHeight() * 0.9));
 		} else if (displayable.isHovered()) {
 			renderer.fill(166, 114, 10);
 			renderer.drawEllipse(displayable.getTopLeftX() + displayable.getWidth() / 2,
-					displayable.getTopLeftY() + displayable.getHeight() / 2, (int) (displayable.getWidth() * 0.9),
-					(int) (displayable.getHeight() * 0.9));
+					displayable.getTopLeftY() + displayable.getHeight() / 2, (int) (displayable.getWidth() * 0.95),
+					(int) (displayable.getHeight() * 0.95));
 		} else {
 			renderer.fill(145, 100, 10);
 			renderer.drawEllipse(displayable.getTopLeftX() + displayable.getWidth() / 2,

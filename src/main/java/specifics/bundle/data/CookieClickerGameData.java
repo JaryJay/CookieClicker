@@ -1,12 +1,13 @@
 package specifics.bundle.data;
 
 import bundle.data.GameData;
+import bundle.data.gui.Label;
 import bundle.visuals.displayable.Background;
 import specifics.bundle.visuals.displayable.BigCookie;
 
 public class CookieClickerGameData extends GameData {
 
-	private int numOfCookies;
+	private long numOfCookies;
 
 	private int numOfCursors;
 	private int numOfGrandmas;
@@ -18,14 +19,16 @@ public class CookieClickerGameData extends GameData {
 
 	public CookieClickerGameData() {
 		addDisplayable(new Background(7, 115, 173));
-		addDisplayable(new BigCookie(300, 250, 200, () -> {
+		Label label = new Label("" + numOfCookies, 150, 60, 200, 80);
+		addDisplayable(new BigCookie(250, 370, 200, () -> {
 			numOfCookies++;
-			System.out.println(numOfCookies);
+			label.setText("" + numOfCookies);
 		}));
-//		addDisplayable(new Button("" + numOfCookies, 600, 60, 120, 50, null));
+		label.setBackgroundB(0);
+		addDisplayable(label);
 	}
 
-	public int getNumOfCookies() {
+	public long getNumOfCookies() {
 		return numOfCookies;
 	}
 

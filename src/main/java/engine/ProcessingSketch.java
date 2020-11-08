@@ -15,12 +15,15 @@ import processing.event.MouseEvent;
  * @author Jay
  *
  */
-public class ProcessingSketch extends PApplet implements GameEngine {
+public class ProcessingSketch extends PApplet implements GameWindow {
 
 	private GameBundleWrapper wrapper;
 	private GameRenderer gameRenderer;
 	private GameInputDecorator inputDecorator;
-	private boolean fullScreen = false;
+
+	private String windowTitle;
+	private final boolean FULLSCREEN = false;
+	private final boolean RESIZABLE = true;
 
 	public ProcessingSketch() {
 		gameRenderer = new ProcessingRenderer(this);
@@ -33,18 +36,27 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 		PApplet.runSketch(processingArgs, this);
 	}
 
+	/**
+	 * Runs once before the processing window is opened. If something is throwing an
+	 * error in here, try moving it to setup().
+	 */
 	@Override
 	public void settings() {
-		if (fullScreen) {
+		if (FULLSCREEN) {
 			fullScreen();
 			size(displayWidth, displayHeight, P2D);
 		} else {
-			size(800, 600, P2D);
+			size(1600, 900, P2D);
 		}
 	}
 
 	@Override
 	public void setup() {
+		surface.setTitle(windowTitle);
+		if (RESIZABLE) {
+			surface.setResizable(true);
+		}
+		textAlign(CENTER, CENTER);
 	}
 
 	/**
@@ -115,6 +127,16 @@ public class ProcessingSketch extends PApplet implements GameEngine {
 	@Override
 	public void mouseWheel(MouseEvent event) {
 		inputDecorator.decorateMouseScrolled(event.getCount());
+	}
+
+	@Override
+	public String getWindowTitle() {
+		return windowTitle;
+	}
+
+	@Override
+	public void setWindowTitle(String windowTitle) {
+		this.windowTitle = windowTitle;
 	}
 
 }

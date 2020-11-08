@@ -21,6 +21,18 @@ public interface Clickable {
 	 */
 	public boolean isOn(float x, float y);
 
+	public default void onPress() {
+		getOnPress().run();
+	}
+
+	public Runnable getOnPress();
+
+	public default void onRelease() {
+		getOnRelease().run();
+	}
+
+	public Runnable getOnRelease();
+
 	public default void onClick() {
 		getOnClick().run();
 	}

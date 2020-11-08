@@ -21,6 +21,9 @@ public class GUIDisplayer extends Displayer<AbstractGUI> {
 		renderer.textSize(displayable.getTextSize());
 		renderer.text(displayable.getText(), displayable.getTopLeftX() + displayable.getWidth() / 2,
 				displayable.getTopLeftY() + displayable.getHeight() / 2);
+		for (AbstractGUI child : displayable.getChildrenGUIs()) {
+			display(child);
+		}
 	}
 
 }

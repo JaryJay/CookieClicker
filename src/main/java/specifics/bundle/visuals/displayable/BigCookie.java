@@ -10,13 +10,6 @@ public class BigCookie extends Button {
 		setBackgroundR(181);
 		setBackgroundG(124);
 		setBackgroundB(18);
-		setHovered(false);
-		setOnHover(() -> {
-			setHovered(true);
-		});
-		setOnDehover(() -> {
-			setHovered(false);
-		});
 	}
 
 	@Override

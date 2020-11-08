@@ -15,24 +15,23 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 	private int topLeftY;
 	private int width;
 	private int height;
-	private int backgroundR;
-	private int backgroundG;
-	private int backgroundB;
-	private int outlineR;
-	private int outlineG;
-	private int outlineB;
-	private int textR;
-	private int textG;
-	private int textB;
+	private int backgroundR = 255;
+	private int backgroundG = 255;
+	private int backgroundB = 255;
+	private int outlineR = 0;
+	private int outlineG = 0;
+	private int outlineB = 0;
+	private int textR = 0;
+	private int textG = 0;
+	private int textB = 0;
 	private int textSize = 24;
-	private int textRatio = 1;
-	private boolean isTextRatio = true;
 
-	private boolean hovered;
-	private boolean pressed;
+	private boolean hovered = false;
+	private boolean pressed = false;
 
 	private Runnable onPress;
 	private Runnable onRelease;
+	private Runnable onClick;
 	private Runnable onHover;
 	private Runnable onDehover;
 
@@ -50,8 +49,12 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 		this.height = height;
 		onPress = new DoNothingRunnable();
 		onRelease = new DoNothingRunnable();
+		onClick = new DoNothingRunnable();
 		onHover = new DoNothingRunnable();
 		onDehover = new DoNothingRunnable();
+
+		childrenGUIs = new ArrayList<>();
+		enabled = true;
 	}
 
 	public void setHeight(int height) {
@@ -174,28 +177,19 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 		this.textSize = textSize;
 	}
 
-	public int getTextRatio() {
-		return textRatio;
-	}
-
-	public void setTextRatio(int textRatio) {
-		this.textRatio = textRatio;
-	}
-
-	public boolean isTextRatio() {
-		return isTextRatio;
-	}
-
-	public void setTextRatio(boolean isTextRatio) {
-		this.isTextRatio = isTextRatio;
-	}
-
 	public boolean isEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void enable() {
+		this.enabled = true;
+	}
+
+	public void disable() {
+		this.enabled = false;
+		for (AbstractGUI child : childrenGUIs) {
+			child.disable();
+		}
 	}
 
 	public boolean isHovered() {
@@ -210,8 +204,8 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 		return pressed;
 	}
 
-	public void setPressed(boolean pressX) {
-		this.pressed = pressX;
+	public void setPressed(boolean pressed) {
+		this.pressed = pressed;
 	}
 
 	public AbstractGUI getParentGUI() {
@@ -228,6 +222,7 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 
 	public void addChildGUI(AbstractGUI childGUI) {
 		childrenGUIs.add(childGUI);
+		childGUI.setParentGUI(this);
 	}
 
 	public void removeChildGUI(AbstractGUI childGUI) {
@@ -242,10 +237,12 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 	}
 
 	@Override
-	public Runnable getOnClick() {
-		return onRelease;
+	public final void onPress() {
+		pressed = true;
+		getOnPress().run();
 	}
 
+	@Override
 	public Runnable getOnPress() {
 		return onPress;
 	}
@@ -254,6 +251,16 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 		this.onPress = onPress;
 	}
 
+	@Override
+	public final void onRelease() {
+		if (pressed) {
+			onClick();
+		}
+		pressed = false;
+		getOnRelease().run();
+	}
+
+	@Override
 	public Runnable getOnRelease() {
 		return onRelease;
 	}
@@ -263,12 +270,33 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 	}
 
 	@Override
+	public Runnable getOnClick() {
+		return onClick;
+	}
+
+	public void setOnClick(Runnable onClick) {
+		this.onClick = onClick;
+	}
+
+	@Override
+	public final void onHover() {
+		hovered = true;
+		onHover.run();
+	}
+
+	@Override
 	public Runnable getOnHover() {
 		return onHover;
 	}
 
 	public void setOnHover(Runnable onHover) {
 		this.onHover = onHover;
+	}
+
+	@Override
+	public final void onDehover() {
+		hovered = false;
+		onDehover.run();
 	}
 
 	@Override

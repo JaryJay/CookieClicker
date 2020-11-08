@@ -35,7 +35,9 @@ public abstract class GameInput extends AbstractBundlePart {
 		ArrayList<? extends AbstractGameInputEventHandler> handlers = inputEventHandlerFactory
 				.getHandlers(inputEvent.getClass());
 		for (AbstractGameInputEventHandler handler : handlers) {
-			handler.handle(inputEvent);
+			boolean handled = handler.handle(inputEvent);
+			if (handled)
+				break;
 		}
 	}
 

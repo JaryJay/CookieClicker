@@ -27,19 +27,19 @@ public class CookieClickerApp {
 	 * @author Jay
 	 */
 	public static void main(String[] args) {
-		// Create an engine.
+		// Create an window.
 		// We use ProcessingSketch in Cookie Clicker.
-		// To use a different engine, assign to engine an instance of a different
-		// class that implements GameEngine.
-		ProcessingSketch engine = new ProcessingSketch();
+		// To use a different window, assign to engine an instance of a different
+		// class that implements GameWindow.
+		ProcessingSketch window = new ProcessingSketch();
 
-		// Get a renderer from the engine.
+		// Get a renderer from the window.
 		// Don't change.
-		GameRenderer renderer = engine.getRenderer();
+		GameRenderer renderer = window.getRenderer();
 
-		// Get an input decorator from the engine.
+		// Get an input decorator from the window.
 		// Don't change.
-		GameInputDecorator inputDecorator = engine.getInputDecorator();
+		GameInputDecorator inputDecorator = window.getInputDecorator();
 
 		// Create a bundle wrapper that holds a bundle. In this case, we use a
 		// CookieClickerGameBundleWrapper.
@@ -49,7 +49,7 @@ public class CookieClickerApp {
 
 		// Create and run the game enabler.
 		// Don't change.
-		GameEnabler enabler = new GameEnabler(engine, renderer, inputDecorator, bundleWrapper);
+		GameEnabler enabler = new GameEnabler(window, renderer, inputDecorator, bundleWrapper, "Cookie Clicker");
 		enabler.enable();
 	}
 
