@@ -2,11 +2,19 @@ package common.coordinates;
 
 public class RelativeCoordinates extends Coordinates {
 
-	HasDimensionsAndCoordinates target;
+	private HasDimensionsAndCoordinates parent;
 
-	public RelativeCoordinates(int x, int y, HasDimensionsAndCoordinates target) {
+	public RelativeCoordinates(float x, float y, HasDimensionsAndCoordinates parent) {
 		super(x, y);
-		this.target = target;
+		this.parent = parent;
+	}
+
+	public HasDimensionsAndCoordinates getParent() {
+		return parent;
+	}
+
+	public void setParent(HasDimensionsAndCoordinates parent) {
+		this.parent = parent;
 	}
 
 }

@@ -1,5 +1,6 @@
 package bundle.input.event;
 
+import common.coordinates.Vector2f;
 import common.source.GameSource;
 
 public class MouseMovedInputEvent extends AbstractGameInputEvent {
@@ -19,6 +20,10 @@ public class MouseMovedInputEvent extends AbstractGameInputEvent {
 
 	public int getMouseY() {
 		return mouseY;
+	}
+
+	public Vector2f getMouseCoords() {
+		return new Vector2f(mouseX, mouseY);
 	}
 
 	@Override

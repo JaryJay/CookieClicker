@@ -7,14 +7,16 @@ import bundle.logic.Hoverable;
 import bundle.visuals.displayable.Displayable;
 import bundle.visuals.displayer.GUIDisplayer;
 import common.DoNothingRunnable;
+import common.coordinates.HasDimensionsAndCoordinates;
+import common.coordinates.PixelCoordinates;
 
-public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
+public abstract class AbstractGUI implements Displayable, Clickable, Hoverable, HasDimensionsAndCoordinates {
 
 	private String text = "";
-	private int topLeftX;
-	private int topLeftY;
-	private int width;
-	private int height;
+	private float x;
+	private float y;
+	private float width;
+	private float height;
 	private int backgroundR = 255;
 	private int backgroundG = 255;
 	private int backgroundB = 255;
@@ -40,11 +42,11 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 
 	private boolean enabled;
 
-	public AbstractGUI(String text, int topLeftX, int topLeftY, int width, int height) {
+	public AbstractGUI(String text, int X, int Y, int width, int height) {
 		super();
 		this.text = text;
-		this.topLeftX = topLeftX;
-		this.topLeftY = topLeftY;
+		this.x = X;
+		this.y = Y;
 		this.width = width;
 		this.height = height;
 		onPress = new DoNothingRunnable();
@@ -57,10 +59,6 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 		enabled = true;
 	}
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
 	public String getText() {
 		return text;
 	}
@@ -69,32 +67,36 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 		this.text = text;
 	}
 
-	public int getTopLeftX() {
-		return topLeftX;
+	public float getX() {
+		return x;
 	}
 
-	public void setTopLeftX(int topLeftX) {
-		this.topLeftX = topLeftX;
+	public void setX(float X) {
+		this.x = X;
 	}
 
-	public int getTopLeftY() {
-		return topLeftY;
+	public float getY() {
+		return y;
 	}
 
-	public void setTopLeftY(int topLeftY) {
-		this.topLeftY = topLeftY;
+	public void setY(float Y) {
+		this.y = Y;
 	}
 
-	public int getWidth() {
+	public float getWidth() {
 		return width;
 	}
 
-	public void setWidth(int width) {
+	public void setWidth(float width) {
 		this.width = width;
 	}
 
-	public int getHeight() {
+	public float getHeight() {
 		return height;
+	}
+
+	public void setHeight(float height) {
+		this.height = height;
 	}
 
 	public int getBackgroundR() {
@@ -231,8 +233,8 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 
 	@Override
 	public boolean isOn(float x, float y) {
-		boolean inboundsX = x > getTopLeftX() && x < getTopLeftX() + getWidth();
-		boolean inboundsY = y > getTopLeftY() && y < getTopLeftY() + getHeight();
+		boolean inboundsX = x > getX() && x < getX() + getWidth();
+		boolean inboundsY = y > getY() && y < getY() + getHeight();
 		return inboundsX && inboundsY;
 	}
 
@@ -311,6 +313,28 @@ public abstract class AbstractGUI implements Displayable, Clickable, Hoverable {
 	@Override
 	public String getDisplayerName() {
 		return GUIDisplayer.class.getName();
+	}
+
+	@Override
+	public PixelCoordinates getCoordinates() {
+		return new PixelCoordinates(x, y);
+	}
+
+	@Override
+	public PixelCoordinates getDimensions() {
+		return new PixelCoordinates(width, height);
+	}
+
+	@Override
+	public void setCoordinates(PixelCoordinates coordinates) {
+		x = coordinates.x;
+		y = coordinates.y;
+	}
+
+	@Override
+	public void setDimensions(PixelCoordinates dimensions) {
+		width = dimensions.x;
+		height = dimensions.y;
 	}
 
 }

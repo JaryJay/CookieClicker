@@ -6,6 +6,7 @@ import bundle.AbstractBundlePart;
 import bundle.data.gui.AbstractGUI;
 import bundle.data.gui.Button;
 import bundle.visuals.displayable.Displayable;
+import common.coordinates.PixelCoordinates;
 import common.entity.User;
 
 /**
@@ -25,6 +26,8 @@ public abstract class GameData extends AbstractBundlePart {
 	 */
 	private ArrayList<AbstractGUI> guis = new ArrayList<>();
 	private User user;
+
+	private PixelCoordinates cursorCoordinates;
 
 	public ArrayList<Displayable> getToBeDisplayed() {
 		return toBeDisplayed;
@@ -49,4 +52,11 @@ public abstract class GameData extends AbstractBundlePart {
 		return user;
 	}
 
+	public PixelCoordinates getCursorCoordinates() {
+		return cursorCoordinates;
+	}
+
+	public void setCursorCoordinates(PixelCoordinates cursorCoordinates) {
+		this.cursorCoordinates = cursorCoordinates;
+	}
 }

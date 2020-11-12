@@ -53,6 +53,7 @@ public class GameEnabler {
 		inputDecorator.setBundleWrapper(wrapper);
 		wrapper.getBundle().initBundleParts();
 		GameLogicTimer timer = new GameLogicTimer(wrapper);
+		wrapper.setLogicTimer(timer);
 		Thread gameLogicThread = new Thread(timer);
 		gameLogicThread.start();
 	}

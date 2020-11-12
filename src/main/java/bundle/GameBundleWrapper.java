@@ -1,6 +1,7 @@
 package bundle;
 
 import bundle.input.GameInputBuffer;
+import bundle.logic.GameLogicTimer;
 import bundle.visuals.renderer.GameRenderer;
 import common.entity.User;
 
@@ -24,6 +25,7 @@ public class GameBundleWrapper {
 	private GameBundle bundle;
 	private GameRenderer renderer;
 	private GameInputBuffer inputBuffer;
+	private GameLogicTimer logicTimer;
 	private User user;
 
 	/**
@@ -69,6 +71,14 @@ public class GameBundleWrapper {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public GameLogicTimer getLogicTimer() {
+		return logicTimer;
+	}
+
+	public void setLogicTimer(GameLogicTimer logicTimer) {
+		this.logicTimer = logicTimer;
 	}
 
 }

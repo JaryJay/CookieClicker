@@ -1,4 +1,4 @@
-package specifics.bundle.visuals.displayable;
+package specifics.bundle.data.gui;
 
 import bundle.data.gui.Button;
 import specifics.bundle.visuals.displayer.BigCookieDisplayer;
@@ -14,8 +14,8 @@ public class BigCookie extends Button {
 
 	@Override
 	public boolean isOn(float x, float y) {
-		float dx = x - getTopLeftX() - getWidth() / 2;
-		float dy = y - getTopLeftY() - getHeight() / 2;
+		float dx = x - getX() - getWidth() / 2;
+		float dy = y - getY() - getHeight() / 2;
 		return dx * dx + dy * dy <= 0.25f * getWidth() * getHeight();
 	}
 
