@@ -1,13 +1,14 @@
 package specifics.bundle.data;
 
-import bundle.data.GameData;
+import java.util.ArrayList;
+import bundle.data.AbstractGameData;
 import bundle.data.gui.Label;
 import bundle.visuals.displayable.Background;
 import common.coordinates.PixelCoordinates;
 import specifics.bundle.data.gui.BigCookie;
 import specifics.bundle.visuals.displayable.InverseKinematics;
 
-public class CookieClickerGameData extends GameData {
+public class CookieClickerGameData extends AbstractGameData {
 
 	private long numOfCookies = 0;
 
@@ -20,31 +21,33 @@ public class CookieClickerGameData extends GameData {
 	private long numOfBanks;
 	private long numOfPortals;
 
-	private InverseKinematics inverseKinematics = new InverseKinematics(new PixelCoordinates(500, 500));
-	private InverseKinematics inverseKinematics2 = new InverseKinematics(new PixelCoordinates(400, 500));
+	private ArrayList<InverseKinematics> legs = new ArrayList<>();
 
 	public CookieClickerGameData() {
+		for (int i = 0; i < 32; i++) {
+			for (int j = 0; j < 15; j++) {
+				legs.add(new InverseKinematics(new PixelCoordinates(50 + 50 * i, 50 + 50 * j)));
+			}
+		}
+
 		addDisplayable(new Background(7, 115, 173));
 		Label label = new Label("" + numOfCookies, 150, 60, 200, 80);
 		addDisplayable(new BigCookie(250, 370, 200, () -> {
 			numOfCookies += 1l;
 //			label.setText("" + numOfCookies);
-			inverseKinematics.setClockwise(!inverseKinematics.isClockwise());
-			inverseKinematics2.setClockwise(!inverseKinematics2.isClockwise());
+			for (InverseKinematics i : legs) {
+				i.setClockwise(!i.isClockwise());
+			}
 		}));
 		label.setBackgroundB(0);
 //		addDisplayable(label);
-//		inverseKinematics.setClockwise(false);
-		addDisplayable(inverseKinematics);
-		addDisplayable(inverseKinematics2);
+		for (InverseKinematics i : legs) {
+			addDisplayable(i);
+		}
 	}
 
-	public InverseKinematics getInverseKinematics() {
-		return inverseKinematics;
-	}
-
-	public InverseKinematics getInverseKinematics2() {
-		return inverseKinematics2;
+	public ArrayList<InverseKinematics> getLegs() {
+		return legs;
 	}
 
 	public long getNumOfCookies() {

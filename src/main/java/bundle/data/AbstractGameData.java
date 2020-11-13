@@ -15,7 +15,7 @@ import common.entity.User;
  * @author Jay
  *
  */
-public abstract class GameData extends AbstractBundlePart {
+public abstract class AbstractGameData extends AbstractBundlePart {
 
 	/**
 	 * An arraylist of displayables that the game would display.

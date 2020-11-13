@@ -40,7 +40,7 @@ public class GameLogicTimer implements Runnable {
 		}
 		currentTime = newTime;
 		accumulator += frameTime;
-		GameLogic gameLogic = bundleWrapper.getBundle().getLogic();
+		AbstractGameLogic gameLogic = bundleWrapper.getBundle().getLogic();
 
 		// Updating as many times as needed to make up for any lag
 		while (accumulator >= targetFrameTime) {

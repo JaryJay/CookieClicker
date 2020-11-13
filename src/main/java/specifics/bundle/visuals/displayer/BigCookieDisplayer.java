@@ -1,12 +1,12 @@
 package specifics.bundle.visuals.displayer;
 
-import bundle.visuals.displayer.Displayer;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.displayer.AbstractDisplayer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 import specifics.bundle.data.gui.BigCookie;
 
-public class BigCookieDisplayer extends Displayer<BigCookie> {
+public class BigCookieDisplayer extends AbstractDisplayer<BigCookie> {
 
-	public BigCookieDisplayer(GameRenderer renderer) {
+	public BigCookieDisplayer(AbstractGameRenderer renderer) {
 		super(renderer);
 	}
 

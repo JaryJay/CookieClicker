@@ -2,7 +2,7 @@ package bundle;
 
 import bundle.input.GameInputBuffer;
 import bundle.logic.GameLogicTimer;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 import common.entity.User;
 
 /**
@@ -23,7 +23,7 @@ import common.entity.User;
 public class GameBundleWrapper {
 
 	private GameBundle bundle;
-	private GameRenderer renderer;
+	private AbstractGameRenderer renderer;
 	private GameInputBuffer inputBuffer;
 	private GameLogicTimer logicTimer;
 	private User user;
@@ -53,11 +53,11 @@ public class GameBundleWrapper {
 		return bundle;
 	}
 
-	public GameRenderer getRenderer() {
+	public AbstractGameRenderer getRenderer() {
 		return renderer;
 	}
 
-	public void setRenderer(GameRenderer renderer) {
+	public void setRenderer(AbstractGameRenderer renderer) {
 		this.renderer = renderer;
 	}
 

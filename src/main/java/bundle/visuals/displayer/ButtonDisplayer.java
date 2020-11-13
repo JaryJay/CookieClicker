@@ -1,11 +1,11 @@
 package bundle.visuals.displayer;
 
 import bundle.data.gui.Button;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 
-public class ButtonDisplayer extends Displayer<Button> {
+public class ButtonDisplayer extends AbstractDisplayer<Button> {
 
-	public ButtonDisplayer(GameRenderer renderer) {
+	public ButtonDisplayer(AbstractGameRenderer renderer) {
 		super(renderer);
 	}
 

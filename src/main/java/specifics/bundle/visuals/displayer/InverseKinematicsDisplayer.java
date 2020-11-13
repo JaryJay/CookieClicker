@@ -1,13 +1,13 @@
 package specifics.bundle.visuals.displayer;
 
-import bundle.visuals.displayer.Displayer;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.displayer.AbstractDisplayer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 import common.coordinates.PixelCoordinates;
 import specifics.bundle.visuals.displayable.InverseKinematics;
 
-public class InverseKinematicsDisplayer extends Displayer<InverseKinematics> {
+public class InverseKinematicsDisplayer extends AbstractDisplayer<InverseKinematics> {
 
-	public InverseKinematicsDisplayer(GameRenderer renderer) {
+	public InverseKinematicsDisplayer(AbstractGameRenderer renderer) {
 		super(renderer);
 	}
 

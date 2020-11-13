@@ -1,13 +1,13 @@
 package specifics.bundle.visuals.displayer;
 
-import bundle.visuals.displayer.Displayer;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.displayer.AbstractDisplayer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 import common.coordinates.PixelCoordinates;
 import specifics.bundle.visuals.displayable.Stick;
 
-public class StickDisplayer extends Displayer<Stick> {
+public class StickDisplayer extends AbstractDisplayer<Stick> {
 
-	public StickDisplayer(GameRenderer renderer) {
+	public StickDisplayer(AbstractGameRenderer renderer) {
 		super(renderer);
 	}
 

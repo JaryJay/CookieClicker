@@ -1,11 +1,11 @@
 package bundle.visuals.displayer;
 
 import bundle.visuals.displayable.Background;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 
-public class BackgroundDisplayer extends Displayer<Background> {
+public class BackgroundDisplayer extends AbstractDisplayer<Background> {
 
-	public BackgroundDisplayer(GameRenderer renderer) {
+	public BackgroundDisplayer(AbstractGameRenderer renderer) {
 		super(renderer);
 	}
 

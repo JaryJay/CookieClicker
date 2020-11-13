@@ -1,6 +1,6 @@
 package common.coordinates;
 
-public class Vector2f extends Coordinates {
+public class Vector2f extends AbstractCoordinates {
 
 	public Vector2f(float x, float y) {
 		super(x, y);

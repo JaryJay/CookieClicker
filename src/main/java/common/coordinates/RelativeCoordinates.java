@@ -1,6 +1,6 @@
 package common.coordinates;
 
-public class RelativeCoordinates extends Coordinates {
+public class RelativeCoordinates extends AbstractCoordinates {
 
 	private HasDimensionsAndCoordinates parent;
 

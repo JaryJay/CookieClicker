@@ -1,6 +1,6 @@
 package common.coordinates;
 
-public class PixelCoordinates extends Coordinates {
+public class PixelCoordinates extends AbstractCoordinates {
 
 	public PixelCoordinates(float x, float y) {
 		super(x, y);

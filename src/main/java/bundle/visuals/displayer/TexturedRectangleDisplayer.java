@@ -1,12 +1,12 @@
 package bundle.visuals.displayer;
 
 import bundle.visuals.displayable.ProcessingTexturedRectangle;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 import common.coordinates.PixelCoordinates;
 
-public class TexturedRectangleDisplayer extends Displayer<ProcessingTexturedRectangle> {
+public class TexturedRectangleDisplayer extends AbstractDisplayer<ProcessingTexturedRectangle> {
 
-	public TexturedRectangleDisplayer(GameRenderer renderer) {
+	public TexturedRectangleDisplayer(AbstractGameRenderer renderer) {
 		super(renderer);
 	}
 

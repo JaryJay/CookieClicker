@@ -1,17 +1,17 @@
 package bundle.visuals;
 
 import bundle.AbstractBundlePart;
-import bundle.data.GameData;
+import bundle.data.AbstractGameData;
 import bundle.visuals.displayable.Displayable;
 import bundle.visuals.displayer.DisplayerFactory;
 
 /**
- * A bundle part that displays visuals based on data from {@link GameData}.
+ * A bundle part that displays visuals based on data from {@link AbstractGameData}.
  * 
  * @author Jay
  *
  */
-public abstract class GameVisuals extends AbstractBundlePart {
+public abstract class AbstractGameVisuals extends AbstractBundlePart {
 
 	private DisplayerFactory displayerFactory;
 

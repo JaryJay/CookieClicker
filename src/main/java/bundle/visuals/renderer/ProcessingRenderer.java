@@ -4,7 +4,7 @@ import bundle.visuals.texture.AbstractTexture;
 import bundle.visuals.texture.ProcessingTexture;
 import engine.ProcessingSketch;
 
-public class ProcessingRenderer implements GameRenderer {
+public class ProcessingRenderer extends AbstractGameRenderer {
 
 	private ProcessingSketch sketch;
 

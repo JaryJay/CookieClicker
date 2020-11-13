@@ -1,8 +1,8 @@
 package specifics.bundle.logic;
 
-import bundle.logic.GameLogic;
+import bundle.logic.AbstractGameLogic;
 
-public class CookieClickerGameLogic extends GameLogic {
+public class CookieClickerGameLogic extends AbstractGameLogic {
 
 	@Override
 	public void update() {

@@ -1,18 +1,18 @@
 package bundle.logic;
 
 import bundle.AbstractBundlePart;
-import bundle.data.GameData;
-import bundle.input.GameInput;
+import bundle.data.AbstractGameData;
+import bundle.input.AbstractGameInput;
 
 /**
  * A bundle part that updates data and handles user input.
  * 
- * See {@link GameData} and {@link GameInput}.
+ * See {@link AbstractGameData} and {@link AbstractGameInput}.
  * 
  * @author Jay
  *
  */
-public abstract class GameLogic extends AbstractBundlePart {
+public abstract class AbstractGameLogic extends AbstractBundlePart {
 
 	public abstract void update();
 

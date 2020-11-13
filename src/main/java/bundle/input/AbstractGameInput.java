@@ -21,7 +21,7 @@ import common.coordinates.PixelCoordinates;
  * @author Jay
  *
  */
-public abstract class GameInput extends AbstractBundlePart {
+public abstract class AbstractGameInput extends AbstractBundlePart {
 
 	private GameInputBuffer inputBuffer;
 	private GameInputEventHandlerFactory inputEventHandlerFactory;

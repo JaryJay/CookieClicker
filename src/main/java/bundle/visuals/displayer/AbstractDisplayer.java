@@ -1,13 +1,11 @@
 package bundle.visuals.displayer;
 
-import com.sun.javafx.webkit.theme.Renderer;
-
 import bundle.visuals.displayable.Displayable;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 
 /**
  * An abstract displayer that displays a given {@link Displayable}. Each
- * {@link Displayer} will have a corresponding {@link Displayable}.
+ * {@link AbstractDisplayer} will have a corresponding {@link Displayable}.
  * <p>
  * Example:
  * 
@@ -20,16 +18,16 @@ import bundle.visuals.renderer.GameRenderer;
  *
  * @param <D> generic {@link Displayable}
  */
-public abstract class Displayer<D extends Displayable> {
+public abstract class AbstractDisplayer<D extends Displayable> {
 
-	protected GameRenderer renderer;
+	protected AbstractGameRenderer renderer;
 
 	/**
-	 * Takes in a {@link Renderer} and saves it.
+	 * Takes in a {@link AbstractGameRenderer} and saves it.
 	 * 
 	 * @param renderer the renderer
 	 */
-	public Displayer(GameRenderer renderer) {
+	public AbstractDisplayer(AbstractGameRenderer renderer) {
 		this.renderer = renderer;
 	}
 

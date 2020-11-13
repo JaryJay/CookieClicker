@@ -2,7 +2,7 @@ package specifics.bundle.input;
 
 import java.util.ArrayList;
 
-import bundle.input.GameInput;
+import bundle.input.AbstractGameInput;
 import bundle.input.eventhandler.KeyPressedInputEventHandler;
 import bundle.input.eventhandler.KeyReleasedInputEventHandler;
 import bundle.input.eventhandler.MouseMovedInputEventHandler;
@@ -12,7 +12,7 @@ import bundle.input.eventhandler.MouseScrolledInputEventHandler;
 import specifics.bundle.data.CookieClickerGameData;
 import specifics.bundle.visuals.displayable.InverseKinematics;
 
-public class CookieClickerGameInput extends GameInput {
+public class CookieClickerGameInput extends AbstractGameInput {
 
 	@Override
 	protected ArrayList<KeyPressedInputEventHandler> setKeyPressedInputHandler() {
@@ -38,15 +38,10 @@ public class CookieClickerGameInput extends GameInput {
 //			return false;
 //		});
 		mouseMovedInputEventHandlers.add((event) -> {
-			InverseKinematics inverseKinematics = ((CookieClickerGameData) getBundle().getData())
-					.getInverseKinematics();
-			inverseKinematics.setEndPoint(event.getMouseCoords().toPixelCoordinates());
-			return false;
-		});
-		mouseMovedInputEventHandlers.add((event) -> {
-			InverseKinematics inverseKinematics2 = ((CookieClickerGameData) getBundle().getData())
-					.getInverseKinematics2();
-			inverseKinematics2.setEndPoint(event.getMouseCoords().toPixelCoordinates());
+			ArrayList<InverseKinematics> legs = ((CookieClickerGameData) getBundle().getData()).getLegs();
+			for (InverseKinematics leg : legs) {
+				leg.setEndPoint(event.getMouseCoords().toPixelCoordinates());
+			}
 			return false;
 		});
 		return mouseMovedInputEventHandlers;

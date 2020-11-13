@@ -1,11 +1,11 @@
 package common.coordinates;
 
-public abstract class Coordinates {
+public abstract class AbstractCoordinates {
 
 	public float x;
 	public float y;
 
-	public Coordinates(float x, float y) {
+	public AbstractCoordinates(float x, float y) {
 		super();
 		this.x = x;
 		this.y = y;

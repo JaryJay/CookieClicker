@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import bundle.visuals.displayable.Displayable;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 
 /**
  * A factory that finds the corresponding displayer for a given displayable.
@@ -17,7 +17,7 @@ import bundle.visuals.renderer.GameRenderer;
  * 1. Make a class implementing the {@link Displayable} interface under the
  * package specifics.bundle.visuals.displayable or bundle.visuals.displayable.
  * <p>
- * 2. Make a class extending the {@link Displayer} class under the package
+ * 2. Make a class extending the {@link AbstractDisplayer} class under the package
  * specifics.bundle.visuals.displayer or bundle.visuals.displayer. You must give
  * the class the same name as the Displayable with the suffix "Displayer".
  * <p>
@@ -33,16 +33,16 @@ import bundle.visuals.renderer.GameRenderer;
  */
 public class DisplayerFactory {
 
-	private GameRenderer renderer;
+	private AbstractGameRenderer renderer;
 	@SuppressWarnings("rawtypes")
-	Map<Class<? extends Displayable>, Displayer> displayableToDisplayer = new HashMap<>();
+	Map<Class<? extends Displayable>, AbstractDisplayer> displayableToDisplayer = new HashMap<>();
 
 	/**
 	 * Takes in a renderer and saves it.
 	 * 
 	 * @param renderer the renderer
 	 */
-	public DisplayerFactory(GameRenderer renderer) {
+	public DisplayerFactory(AbstractGameRenderer renderer) {
 		this.renderer = renderer;
 	}
 
@@ -54,10 +54,10 @@ public class DisplayerFactory {
 	 * @throws ClassNotFoundException corresponding displayer not found
 	 */
 	@SuppressWarnings("rawtypes")
-	public Displayer getDisplayer(Displayable displayable) throws ClassNotFoundException {
+	public AbstractDisplayer getDisplayer(Displayable displayable) throws ClassNotFoundException {
 		// Checking first to see if the corresponding displayer already exists in the
 		// hashmap
-		Displayer displayer = displayableToDisplayer.get(displayable.getClass());
+		AbstractDisplayer displayer = displayableToDisplayer.get(displayable.getClass());
 		if (displayer != null) {
 			return displayer;
 		}
@@ -65,8 +65,8 @@ public class DisplayerFactory {
 		String className = displayable.getDisplayerName();
 		try {
 			// Instantiate the displayer using the dark magic
-			Class<? extends Displayer> displayerClass = Class.forName(className).asSubclass(Displayer.class);
-			Constructor<? extends Displayer> displayerConstructor = displayerClass.getConstructor(GameRenderer.class);
+			Class<? extends AbstractDisplayer> displayerClass = Class.forName(className).asSubclass(AbstractDisplayer.class);
+			Constructor<? extends AbstractDisplayer> displayerConstructor = displayerClass.getConstructor(AbstractGameRenderer.class);
 			displayer = displayerConstructor.newInstance(renderer);
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException | NoSuchMethodException | SecurityException e) {

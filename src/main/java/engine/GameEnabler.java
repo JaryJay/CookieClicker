@@ -3,7 +3,7 @@ package engine;
 import bundle.GameBundleWrapper;
 import bundle.input.inputdecorator.GameInputDecorator;
 import bundle.logic.GameLogicTimer;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 
 /**
  * A game kickstarter. Initializes everything required to start a game, and puts
@@ -17,7 +17,7 @@ import bundle.visuals.renderer.GameRenderer;
 public class GameEnabler {
 
 	private GameWindow window;
-	private GameRenderer renderer;
+	private AbstractGameRenderer renderer;
 	private GameInputDecorator inputDecorator;
 	private GameBundleWrapper wrapper;
 
@@ -30,7 +30,7 @@ public class GameEnabler {
 	 * @param inputDecorator
 	 * @param wrapper
 	 */
-	public GameEnabler(GameWindow window, GameRenderer renderer, GameInputDecorator inputDecorator,
+	public GameEnabler(GameWindow window, AbstractGameRenderer renderer, GameInputDecorator inputDecorator,
 			GameBundleWrapper wrapper, String windowTitle) {
 		this.window = window;
 		this.renderer = renderer;

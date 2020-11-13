@@ -1,11 +1,11 @@
 package bundle.visuals.displayer;
 
 import bundle.data.gui.AbstractGUI;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 
-public class GUIDisplayer extends Displayer<AbstractGUI> {
+public class GUIDisplayer extends AbstractDisplayer<AbstractGUI> {
 
-	public GUIDisplayer(GameRenderer renderer) {
+	public GUIDisplayer(AbstractGameRenderer renderer) {
 		super(renderer);
 	}
 

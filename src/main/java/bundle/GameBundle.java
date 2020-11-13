@@ -2,10 +2,10 @@ package bundle;
 
 import java.util.ArrayList;
 
-import bundle.data.GameData;
-import bundle.input.GameInput;
-import bundle.logic.GameLogic;
-import bundle.visuals.GameVisuals;
+import bundle.data.AbstractGameData;
+import bundle.input.AbstractGameInput;
+import bundle.logic.AbstractGameLogic;
+import bundle.visuals.AbstractGameVisuals;
 
 /**
  * A collection of the four bundle parts needed in a game:
@@ -25,10 +25,10 @@ public class GameBundle {
 
 	protected GameBundleWrapper wrapper;
 
-	protected GameData data;
-	protected GameInput input;
-	protected GameLogic logic;
-	protected GameVisuals visuals;
+	protected AbstractGameData data;
+	protected AbstractGameInput input;
+	protected AbstractGameLogic logic;
+	protected AbstractGameVisuals visuals;
 
 	/**
 	 * A constructor that takes in a game data, input, logic, and visuals. Then, the
@@ -39,7 +39,7 @@ public class GameBundle {
 	 * @param logic   GameLogic
 	 * @param visuals GameVisuals
 	 */
-	public GameBundle(GameData data, GameInput input, GameLogic logic, GameVisuals visuals) {
+	public GameBundle(AbstractGameData data, AbstractGameInput input, AbstractGameLogic logic, AbstractGameVisuals visuals) {
 		this.data = data;
 		this.input = input;
 		this.logic = logic;
@@ -60,35 +60,35 @@ public class GameBundle {
 		return parts;
 	}
 
-	public GameData getData() {
+	public AbstractGameData getData() {
 		return data;
 	}
 
-	public void setData(GameData data) {
+	public void setData(AbstractGameData data) {
 		this.data = data;
 	}
 
-	public GameInput getInput() {
+	public AbstractGameInput getInput() {
 		return input;
 	}
 
-	public void setInput(GameInput input) {
+	public void setInput(AbstractGameInput input) {
 		this.input = input;
 	}
 
-	public GameLogic getLogic() {
+	public AbstractGameLogic getLogic() {
 		return logic;
 	}
 
-	public void setLogic(GameLogic logic) {
+	public void setLogic(AbstractGameLogic logic) {
 		this.logic = logic;
 	}
 
-	public GameVisuals getVisuals() {
+	public AbstractGameVisuals getVisuals() {
 		return visuals;
 	}
 
-	public void setVisuals(GameVisuals visuals) {
+	public void setVisuals(AbstractGameVisuals visuals) {
 		this.visuals = visuals;
 	}
 

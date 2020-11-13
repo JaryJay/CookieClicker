@@ -4,7 +4,7 @@ import bundle.GameBundle;
 import bundle.GameBundleWrapper;
 import bundle.input.inputdecorator.GameInputDecorator;
 import bundle.input.inputdecorator.ProcessingInputDecorator;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 import bundle.visuals.renderer.ProcessingRenderer;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
@@ -18,7 +18,7 @@ import processing.event.MouseEvent;
 public class ProcessingSketch extends PApplet implements GameWindow {
 
 	private GameBundleWrapper wrapper;
-	private GameRenderer gameRenderer;
+	private AbstractGameRenderer gameRenderer;
 	private GameInputDecorator inputDecorator;
 
 	private String windowTitle;
@@ -79,7 +79,7 @@ public class ProcessingSketch extends PApplet implements GameWindow {
 		return wrapper;
 	}
 
-	public GameRenderer getRenderer() {
+	public AbstractGameRenderer getRenderer() {
 		return gameRenderer;
 	}
 

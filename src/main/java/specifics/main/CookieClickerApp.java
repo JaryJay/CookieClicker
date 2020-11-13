@@ -2,7 +2,7 @@ package specifics.main;
 
 import bundle.GameBundleWrapper;
 import bundle.input.inputdecorator.GameInputDecorator;
-import bundle.visuals.renderer.GameRenderer;
+import bundle.visuals.renderer.AbstractGameRenderer;
 import engine.GameEnabler;
 import engine.ProcessingSketch;
 import specifics.bundle.CookieClickerGameBundleWrapper;
@@ -35,7 +35,7 @@ public class CookieClickerApp {
 
 		// Get a renderer from the window.
 		// Don't change.
-		GameRenderer renderer = window.getRenderer();
+		AbstractGameRenderer renderer = window.getRenderer();
 
 		// Get an input decorator from the window.
 		// Don't change.
